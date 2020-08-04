@@ -5,7 +5,7 @@ int main() {
     int fd;
     int ret;
 
-    fd = open("input_data", O_RDONLY);
+    fd = open("../input_data", O_RDONLY);
     while ((ret=get_next_line(fd, &line))>=0)
     {
         ft_putstr_fd(line,1);
