@@ -25,5 +25,5 @@ add_library(libft STATIC src/libft/ft_atoi.c src/libft/ft_isascii.c src/libft/ft
         src/libft/ft_putendl_fd.c
         src/libft/ft_putnbr_fd.c)
 
-add_executable(scholl21_3c_cub3d src/main.c src/gnl/get_next_line.c src/gnl/get_next_line_utils.c src/libft/libft.a)
+add_executable(scholl21_3c_cub3d src/main.c src/gnl/get_next_line.c src/gnl/get_next_line_utils.c)
 target_link_libraries(scholl21_3c_cub3d libft)
