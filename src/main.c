@@ -1,20 +1,9 @@
-#include "parsing/parsing.h"
+#include "game/game.h"
 
-int main() {
-    char *line;
-    int fd;
-    int ret;
+int main(int argc, char **argv) {
+    t_data data;
 
-    fd = open("input_data", O_RDONLY);
-    while ((ret=get_next_line(fd, &line))>=0)
-    {
-        ft_putstr_fd(line,1);
-        ft_putstr_fd("\n",1);
-        free(line);
-        if (ret == 0)
-            break;
-    }
-
-    printf("Hello, World!\n");
+    argc++;
+	make_map(argv[1], &data);
     return 0;
 }
