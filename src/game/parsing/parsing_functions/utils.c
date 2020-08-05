@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/05 23:09:25 by charmon           #+#    #+#             */
+/*   Created: 2020/08/05 23:09:42 by charmon           #+#    #+#             */
 /*   Updated: 2020/08/05 23:09:44 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game/game.h"
+#include "../../game.h"
 
-int main(int argc, char **argv) {
-    t_data data;
+void	clear_2x_list(char **list)
+{
+	int	idx;
 
-    argc++;
-	make_map(argv[1], &data);
-    return 0;
+	if (!list)
+		return ;
+	idx = -1;
+	while (list[++idx])
+		free(list[idx]);
+	free(list);
 }

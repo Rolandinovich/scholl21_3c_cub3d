@@ -1,14 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   make_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/05 23:09:28 by charmon           #+#    #+#             */
+/*   Updated: 2020/08/05 23:09:44 by charmon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../game.h"
 
 void		make_map(char *file, t_data *data)
 {
-	int		idx;
-
 	load_data(file, data);
-	idx = -1;
-	while ((*data).data_lines[++idx])
-	{
-		ft_putstr_fd((*data).data_lines[idx], 1);
-		ft_putstr_fd("\n", 1);
-	}
+	parsing(data);
 }

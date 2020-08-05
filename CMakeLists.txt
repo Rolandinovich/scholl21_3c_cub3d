@@ -24,9 +24,9 @@ add_library(libft STATIC src/libft/ft_atoi.c src/libft/ft_isascii.c src/libft/ft
         src/libft/ft_putchar_fd.c
         src/libft/ft_putstr_fd.c
         src/libft/ft_putendl_fd.c
-        src/libft/ft_putnbr_fd.c src/game/parsing/utils.c)
+        src/libft/ft_putnbr_fd.c)
 
 add_executable(scholl21_3c_cub3d src/main.c src/game/game.h src/libft/libft.a src/gnl/get_next_line.c
-        src/gnl/get_next_line_utils.c src/game/parsing/make_map.c)
+        src/gnl/get_next_line_utils.c src/game/parsing/make_map.c src/game/parsing/read_file.c src/game/parsing/parsing.c src/game/parsing/parsing_utils.c src/game/parsing/parsing_functions/parse_r.c src/game/parsing/parsing_functions/utils.c src/game/parsing/parsing_functions/check_lines.c)
 
 target_link_libraries(scholl21_3c_cub3d libft)

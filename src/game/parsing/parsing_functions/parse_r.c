@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_r.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/05 23:09:25 by charmon           #+#    #+#             */
+/*   Created: 2020/08/05 23:09:14 by charmon           #+#    #+#             */
 /*   Updated: 2020/08/05 23:09:44 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game/game.h"
+#include "../../game.h"
 
-int main(int argc, char **argv) {
-    t_data data;
+void		parsing_r(char *str, t_data *data)
+{
+	char	**list;
+	int		count;
 
-    argc++;
-	make_map(argv[1], &data);
-    return 0;
+	(*data).error = 3;
+	if (symbols_in_str(str, LIGAL_R_SIMBOLS))
+		return ;
+	list = ft_split(str, ' ');
+	count = 0;
+	while (list[count])
+		count++;
+	if (count != 3)
+	{
+		clear_2x_list(list);
+		return ;
+	}
+	(*data).r[0] = ft_atoi(list[1]);
+	(*data).r[1] = ft_atoi(list[2]);
+	(*data).error = 0;
+	clear_2x_list(list);
 }

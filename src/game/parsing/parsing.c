@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/05 23:09:25 by charmon           #+#    #+#             */
+/*   Created: 2020/08/05 23:09:33 by charmon           #+#    #+#             */
 /*   Updated: 2020/08/05 23:09:44 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game/game.h"
+#include "../game.h"
 
-int main(int argc, char **argv) {
-    t_data data;
+int		parsing(t_data *data)
+{
+	int idx;
 
-    argc++;
-	make_map(argv[1], &data);
-    return 0;
+	idx = -1;
+	while ((*data).data_lines[++idx])
+	{
+		if (ft_strnstr((*data).data_lines[idx], "R", (size_t)~0))
+			parsing_r((*data).data_lines[idx], data);
+	}
+	return (0);
 }
