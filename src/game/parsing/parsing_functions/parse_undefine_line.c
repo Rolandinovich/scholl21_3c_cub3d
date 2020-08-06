@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_map.c                                         :+:      :+:    :+:   */
+/*   parse_undefine_line.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/05 23:09:28 by charmon           #+#    #+#             */
-/*   Updated: 2020/08/05 23:12:12 by charmon          ###   ########.fr       */
+/*   Created: 2020/08/06 22:08:05 by charmon           #+#    #+#             */
+/*   Updated: 2020/08/06 22:08:05 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../game.h"
+#include "../../game.h"
 
-void		make_map(char *file, t_data *data)
+void	parse_undefined_line(char *str, t_data *data)
 {
-	data_init(data);
-	load_data(file, data);
-	parsing(data);
+	str++;
+	data++;
 }

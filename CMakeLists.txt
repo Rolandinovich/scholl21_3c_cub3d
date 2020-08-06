@@ -27,6 +27,6 @@ add_library(libft STATIC src/libft/ft_atoi.c src/libft/ft_isascii.c src/libft/ft
         src/libft/ft_putnbr_fd.c)
 
 add_executable(scholl21_3c_cub3d src/main.c src/game/game.h src/libft/libft.a src/gnl/get_next_line.c
-        src/gnl/get_next_line_utils.c src/game/parsing/make_map.c src/game/parsing/read_file.c src/game/parsing/parsing.c src/game/parsing/parsing_utils.c src/game/parsing/parsing_functions/parse_r.c src/game/parsing/parsing_functions/utils.c src/game/parsing/parsing_functions/check_lines.c)
+        src/gnl/get_next_line_utils.c src/game/parsing/make_map.c src/game/parsing/read_file.c src/game/parsing/parsing.c src/game/parsing/parsing_utils.c src/game/parsing/parsing_functions/parse_r.c src/game/parsing/parsing_functions/utils.c src/game/parsing/parsing_functions/check_lines.c src/game/parsing/parsing_functions/parse_f.c src/game/parsing/parsing_functions/parse_c.c src/game/parsing/parsing_functions/parse_no.c src/game/parsing/parsing_functions/parse_so.c src/game/parsing/parsing_functions/parse_we.c src/game/parsing/parsing_functions/parse_ea.c src/game/parsing/parsing_functions/parse_s.c src/game/parsing/parsing_functions/parse_undefine_line.c)
 
 target_link_libraries(scholl21_3c_cub3d libft)
