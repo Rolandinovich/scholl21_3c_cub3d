@@ -6,6 +6,7 @@
 #define LIGAL_R_SIMBOLS "R 1234567890"
 #define LIGAL_F_SIMBOLS "F, 1234567890"
 #define LIGAL_C_SIMBOLS "C, 1234567890"
+#define LIGAL_MAP_SIMBOLS " 10NSEW"
 #include "../gnl/get_next_line.h"
 #include "../libft/libft.h"
 //0 ok
@@ -35,6 +36,8 @@ typedef struct s_data
 	int first_part_fill;
     char **map;
 	int map_fill;
+	int map_start;
+	int map_finish;
     char **data_lines;
     int error;
 }           t_data;

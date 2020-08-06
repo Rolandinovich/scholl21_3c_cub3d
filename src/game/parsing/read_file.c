@@ -6,54 +6,50 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 23:10:32 by charmon           #+#    #+#             */
-/*   Updated: 2020/08/05 23:10:32 by charmon          ###   ########.fr       */
+/*   Updated: 2020/08/06 23:35:03 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../game.h"
 
-static char	*read_file(int fd, t_data *data)
+int			count_lines(char *file, t_data *data)
 {
-	char	buf[1025];
+	char	*line;
+	int		fd;
+	int		res;
 	int		count;
-	char	*tmp;
-	char	*text;
 
-	text = NULL;
-	while ((count = read(fd, buf, 1024)))
+	data->error = 1;
+	if (!(fd = open(file, O_RDONLY)))
+		return (-1);
+	count = 0;
+	while ((res = get_next_line(fd, &line)) >= 0)
 	{
-		buf[count] = '\0';
-		if (!(tmp = (text) ? ft_strjoin(text, buf) : ft_strjoin("", buf)))
-		{
-			(*data).error = 2;
-			if (text)
-				free(text);
-			return (NULL);
-		}
-		free(text);
-		text = tmp;
+		free(line);
+		count++;
+		if (res == 0)
+			break ;
 	}
-	return (text);
+	data->error = 0;
+	return (count);
 }
 
 void		load_data(char *file, t_data *data)
 {
 	int		fd;
-	char	*text;
+	int		count;
+	int		idx;
 
-	if (!(fd = open(file, O_RDONLY)))
-	{
-		(*data).error = 1;
+	(*data).error = 1;
+	count = count_lines(file, data);
+	if (!(data->data_lines = (char**)malloc(sizeof(char*) * (count + 1))))
 		return ;
-	}
-	if ((text = read_file(fd, data)))
-	{
-		(*data).data_lines = ft_split(text, '\n');
-		if ((*data).data_lines)
-			(*data).error = 0;
-		else
-			(*data).error = 2;
-		free(text);
-	}
+	idx = -1;
+	if (!(fd = open(file, O_RDONLY)))
+		return ;
+	while (++idx < count)
+		get_next_line(fd, &((*data).data_lines[idx]));
+	(*data).data_lines[idx] = NULL;
 	close(fd);
+	(*data).error = 0;
 }

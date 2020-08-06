@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 23:09:33 by charmon           #+#    #+#             */
-/*   Updated: 2020/08/06 22:18:01 by charmon          ###   ########.fr       */
+/*   Updated: 2020/08/06 22:39:54 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	parsing_first_part(t_data *data, int idx)
 {
 	while ((*data).data_lines[++idx] && data->error == 0
-	&& data->first_part_fill == 0)
+	&& (data->first_part_fill + data->map_start != 2))
 	{
 		if (ft_strnstr((*data).data_lines[idx], "R", (size_t)~0))
 			parsing_r((*data).data_lines[idx], data);

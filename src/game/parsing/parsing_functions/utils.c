@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 23:09:42 by charmon           #+#    #+#             */
-/*   Updated: 2020/08/06 21:46:21 by charmon          ###   ########.fr       */
+/*   Updated: 2020/08/06 22:57:34 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	data_init(t_data *data)
 	data->c_fill = 0;
 	data->r_fill = 0;
 	data->map_fill = 0;
+	data->map_start = 0;
+	data->map_finish = 0;
 	data->error = 0;
 	data->first_part_fill = 0;
 }
