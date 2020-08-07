@@ -59,5 +59,6 @@ void		parsing_ea(char *str, t_data *data);
 void		parsing_s(char *str, t_data *data);
 void		parse_undefined_line(char *str, t_data *data);
 void		check_first_part_fill(t_data *data);
+void 		parse_map(int start_idx, t_data *data);
 
 #endif

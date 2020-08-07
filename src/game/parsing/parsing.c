@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 23:09:33 by charmon           #+#    #+#             */
-/*   Updated: 2020/08/06 22:39:54 by charmon          ###   ########.fr       */
+/*   Updated: 2020/08/07 22:06:29 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	parsing_first_part(t_data *data, int idx)
 			parse_undefined_line((*data).data_lines[idx], data);
 		check_first_part_fill(data);
 	}
-	return (idx);
+	return (--idx);
 }
 
 int			parsing(t_data *data)
@@ -45,5 +45,14 @@ int			parsing(t_data *data)
 	int		idx;
 
 	idx = parsing_first_part(data, -1);
-	return (idx);
+	if (data->error > 0)
+		return (data->error);
+	parse_map(idx, data);
+	idx = -1;
+	while (data->map[++idx] != NULL)
+	{
+		ft_putstr_fd(data->map[idx], 1);
+		ft_putstr_fd("\n", 1);
+	}
+	return (data->error);
 }
