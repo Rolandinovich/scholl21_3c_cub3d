@@ -6,7 +6,7 @@
 /*   By: charmon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 22:16:40 by charmon           #+#    #+#             */
-/*   Updated: 2020/08/07 22:19:29 by charmon          ###   ########.fr       */
+/*   Updated: 2020/08/08 09:54:23 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,7 @@ void		parse_map(int start_idx, t_data *data)
 	while (idx < count && data->error == 0)
 	{
 		data->map[idx] = create_line(max, data, data->data_lines[start_idx]);
-		ft_putstr_fd(data->map[idx], 1);
-		ft_putstr_fd("\n", 1);
+//		printf("%p\n", data->map[idx]);
 		idx++;
 		start_idx++;
 	}

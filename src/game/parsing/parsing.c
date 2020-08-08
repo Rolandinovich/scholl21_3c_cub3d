@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 23:09:33 by charmon           #+#    #+#             */
-/*   Updated: 2020/08/07 22:06:29 by charmon          ###   ########.fr       */
+/*   Updated: 2020/08/07 22:59:43 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,6 @@ int			parsing(t_data *data)
 	if (data->error > 0)
 		return (data->error);
 	parse_map(idx, data);
-	idx = -1;
-	while (data->map[++idx] != NULL)
-	{
-		ft_putstr_fd(data->map[idx], 1);
-		ft_putstr_fd("\n", 1);
-	}
+
 	return (data->error);
 }

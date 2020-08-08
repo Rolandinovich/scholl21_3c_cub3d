@@ -24,5 +24,6 @@ void		make_map(char *file, t_data *data)
 	{
 		ft_putstr_fd(data->map[idx], 1);
 		ft_putstr_fd("\n", 1);
+		printf("%p\n", data->map[idx]);
 	}
 }
