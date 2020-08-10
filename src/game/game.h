@@ -35,7 +35,10 @@ typedef struct s_data
 	int r_fill;
 	int first_part_fill;
     char **map;
-	int map_fill;
+    int	map_line_count;
+    int map_rows_count;
+    char orientation;
+    int	position[2];
 	int map_start;
 	int map_finish;
     char **data_lines;
@@ -60,5 +63,7 @@ void		parsing_s(char *str, t_data *data);
 void		parse_undefined_line(char *str, t_data *data);
 void		check_first_part_fill(t_data *data);
 void 		parse_map(int start_idx, t_data *data);
+void        verify_map(t_data *data);
+
 
 #endif

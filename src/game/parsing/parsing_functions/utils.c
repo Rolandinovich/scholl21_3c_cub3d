@@ -44,7 +44,11 @@ void	data_init(t_data *data)
 	data->f_fill = 0;
 	data->c_fill = 0;
 	data->r_fill = 0;
-	data->map_fill = 0;
+	data->map_line_count = 0;
+	data->map_rows_count = 0;
+	data->position[0] = -1;
+	data->position[1] = -1;
+	data->orientation = '\0';
 	data->map_start = 0;
 	data->map_finish = 0;
 	data->error = 0;

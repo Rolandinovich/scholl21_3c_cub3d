@@ -48,6 +48,6 @@ int			parsing(t_data *data)
 	if (data->error > 0)
 		return (data->error);
 	parse_map(idx, data);
-
+	verify_map(data);
 	return (data->error);
 }

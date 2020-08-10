@@ -80,12 +80,12 @@ void		parse_map(int start_idx, t_data *data)
 	while (idx < count && data->error == 0)
 	{
 		data->map[idx] = create_line(max, data, data->data_lines[start_idx]);
-//		printf("%p\n", data->map[idx]);
 		idx++;
 		start_idx++;
 	}
+	data->map[idx] = NULL;
 	if (data->error == 2)
 		clear_2x_list(data->map);
-	else
-		data->map[start_idx] = NULL;
+	data->map_line_count = count;
+	data->map_rows_count = max;
 }
