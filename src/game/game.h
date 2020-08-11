@@ -46,7 +46,7 @@ typedef struct s_data
 }           t_data;
 
 void		load_data(char *file, t_data *data);
-void		make_map(char *file, t_data *data);
+int			make_map(char *file, t_data *data);
 int			symbols_in_str(char *str, char *symbols);
 void		clear_2x_list(char **list);
 int			parsing(t_data *data);

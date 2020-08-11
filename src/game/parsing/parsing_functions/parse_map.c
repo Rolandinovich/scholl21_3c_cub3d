@@ -6,7 +6,7 @@
 /*   By: charmon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 22:16:40 by charmon           #+#    #+#             */
-/*   Updated: 2020/08/08 09:54:23 by charmon          ###   ########.fr       */
+/*   Updated: 2020/08/11 19:39:15 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void		parse_map(int start_idx, t_data *data)
 	count = check_and_counting_lines(start_idx, data, &max);
 	if (data->error)
 		return ;
+	data->map_line_count = count;
+	data->map_rows_count = max;
 	if (!(data->map = (char**)malloc((sizeof(char*) * (count + 1)))))
 	{
 		data->error = 2;
@@ -86,6 +88,4 @@ void		parse_map(int start_idx, t_data *data)
 	data->map[idx] = NULL;
 	if (data->error == 2)
 		clear_2x_list(data->map);
-	data->map_line_count = count;
-	data->map_rows_count = max;
 }
