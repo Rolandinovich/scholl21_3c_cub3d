@@ -15,7 +15,7 @@ INC		=	%%%%
 HT		=	%%%%
 DOCP	=	%%%%
 
-CC		=	clang
+CC		=	gcc
 
 NAME	=	libmlx.a
 
@@ -49,7 +49,7 @@ SRC		=	mlx_init.c \
 			mlx_get_screen_size.c
 
 OBJ		=	$(SRC:.c=.o)
-CFLAGS	=	-O3 -I$(INC)
+CFLAGS	=	 -I$(INC)
 
 DESTDIR	=	/usr/local
 

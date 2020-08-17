@@ -22,10 +22,9 @@ int main(int argc, char **argv) {
     void *win_ptr;
 
 	make_map(argv[1], &data);
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "uraaaa");
-	mlx_loop(mlx_ptr);
-
-
+//	mlx_ptr = mlx_init();
+//	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "uraaaa");
+//	mlx_loop(mlx_ptr);
+	start_game();
     return 0;
 }
