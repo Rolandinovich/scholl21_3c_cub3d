@@ -11,6 +11,7 @@
 #include "../gnl/get_next_line.h"
 #include "../libft/libft.h"
 #include "../minilibx_ubuntu/mlx.h"
+#include <math.h>
 //0 ok
 //1 read_file_error
 //2 can't allocate memory
@@ -115,8 +116,8 @@ void		check_first_part_fill(t_data *data);
 void 		parse_map(int start_idx, t_data *data);
 void        verify_map(t_data *data);
 void		pixel_put(t_all *data, int x, int y, int color);
-void		put_rectangle(t_all *all, t_place place);
-int			start_game();
+void		put_rectangle(t_all *all, t_place place, t_place end);
+int			start_game(t_data *data);
 
 
 #endif

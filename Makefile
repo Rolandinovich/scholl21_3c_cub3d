@@ -13,7 +13,7 @@ OBJS			= $(SRCS:.c=.o)
 
 CC				= gcc
 RM				= rm -f
-CFLAGS			= -g -I .
+CFLAGS			=  -g -I .
 #CFLAGS			= -g -Wall -Wextra -Werror -I .
 #LIBS			= -Lmlx -lmlx -framework OpenGL -framework AppKit -lm
 #LIBS			= -L. -lft -L. -lmlx -framework OpenGL -framework AppKit -lm
@@ -26,7 +26,7 @@ NAME			= cub3D
 all:			$(NAME)
 
 $(NAME):		$(LIBFT) $(OBJS) ${HFILES}
-				${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBS}
+				${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBS} -lm
 
 $(LIBFT):
 				@$(MAKE) -C src/libft
