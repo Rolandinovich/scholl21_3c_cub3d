@@ -116,7 +116,7 @@ void		check_first_part_fill(t_data *data);
 void 		parse_map(int start_idx, t_data *data);
 void        verify_map(t_data *data);
 void		pixel_put(t_all *data, int x, int y, int color);
-void		put_rectangle(t_all *all, int start_x, int start_y, int end_x, int end_y);
+void		put_rectangle(t_all *all, int start_x, int start_y, int end_x, int end_y, int color);
 int			start_game(t_data *data);
 
 

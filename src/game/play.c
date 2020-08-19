@@ -40,24 +40,40 @@ int start_game(t_data *data) {
 //		place.x += size;
 //		end.x = place.x + size;
 //	}
-	const float fov = M_PI / 3.;
-	double plr_a = 3 * M_PI / 2;
+	const float fov = M_PI/3.;
+//	double plr_a = 3 * M_PI / 2;
+	double plr_a = 0;
 	float c = 0;
 	data->map[(int) data->position[1]][(int) data->position[0]] = '0';
-	for (size_t i = 0; i < win_w; i++) { // draw the visibility cone
-		float angle = plr_a - fov / 2 + fov * i / (float) win_w;
-		for (float t = 0; t < 20; t += .05) {
-			float cx = data->position[0] + t * cos(angle);
-			float cy = data->position[1] + t * sin(angle);
-			if (data->map[(int) cy][(int) cx] != '0')
-			{
-				size_t column_height = win_h/t;
-				put_rectangle(&all,i, win_h/2 - column_height, i+1, win_h/2 + column_height);
-				break;
+	for (double plr_a = 0.1; plr_a <= M_PI*2; plr_a = plr_a + 0.1) {
+		put_rectangle(&all, 0,0,700,512, 0xFFFFFFFF);
+		for (size_t i = 0; i < win_w; i++) { // draw the visibility cone
+			float angle = plr_a - fov/2 + fov*i/(float) win_w;
+			for (float t = 0; t < 20; t += .01) {
+				float cx = data->position[0] + t*cos(angle);
+				float cy = data->position[1] + t*sin(angle);
+				if (data->map[(int) cy][(int) cx]!='0') {
+					size_t column_height = win_h/(t*cos(angle-plr_a));
+					put_rectangle(&all, i, win_h/2 - column_height*0.5, i + 1, win_h/2 + column_height*0.5, 0x0000FF00);
+					break;
+				}
 			}
 		}
+		mlx_put_image_to_window(all.win->mlx, all.win->win, all.win->img, 0, 0);
+//		mlx_destroy_image(all.win->mlx, all.win->img);
+//		win.img = mlx_new_image(win.mlx, win_w, win_h);
+//		win.addr = mlx_get_data_addr(win.img, &win.bits_per_pixel, &win.line_length, &win.endian);
+//		all.win = &win;
+//		sleep(1);
 	}
+	void    *img;
+	char    *relative_path = "./src/textures/east.xpm";
+	int     img_width;
+	int     img_height;
 
+//	img = mlx_xpm_file_to_image(all.win->mlx, relative_path, &img_width, &img_height);
+//	for(int x = 0; x<64 ; x++)
+//		for(int y = 0; y<)
 
 	mlx_loop(win.mlx);
 }
