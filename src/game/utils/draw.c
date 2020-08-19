@@ -8,18 +8,17 @@ void            pixel_put(t_all *data, int x, int y, int color)
 	*(int*)dst = color;
 }
 
-void	put_rectangle(t_all *all, t_place place, t_place end)
+void	put_rectangle(t_all *all, int start_x, int start_y, int end_x, int end_y)
 {
 	int x;
-
-	mlx_clear_window(all->win->mlx, all->win->win);
-	x = place.x;
-	while (place.y < end.y)
+//	mlx_clear_window(all->win->mlx, all->win->win);
+	x = start_x;
+	while (start_y < end_y)
 	{
-		while (place.x < end.x)
-			pixel_put(all, place.x++, place.y, 0x0000FF00);
-		place.x = x;
-		place.y += 1;
+		while (start_x < end_x)
+			pixel_put(all, start_x++, start_y, 0x0000FF00);
+		start_x = x;
+		start_y += 1;
 	}
 	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, 0, 0);
 //	mlx_destroy_image(all->win->mlx, all->win->img);
