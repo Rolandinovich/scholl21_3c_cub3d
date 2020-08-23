@@ -46,14 +46,14 @@ int start_game(t_data *data) {
 	float c = 0;
 	data->map[(int) data->position[1]][(int) data->position[0]] = '0';
 	for (double plr_a = 0.1; plr_a <= M_PI*2; plr_a = plr_a + 0.1) {
-		put_rectangle(&all, 0,0,700,512, 0xFFFFFFFF);
+		put_rectangle(&all, 0, 0, 700, 512, 0xFFFFFFFF);
 		for (size_t i = 0; i < win_w; i++) { // draw the visibility cone
 			float angle = plr_a - fov/2 + fov*i/(float) win_w;
 			for (float t = 0; t < 20; t += .01) {
 				float cx = data->position[0] + t*cos(angle);
 				float cy = data->position[1] + t*sin(angle);
 				if (data->map[(int) cy][(int) cx]!='0') {
-					size_t column_height = win_h/(t*cos(angle-plr_a));
+					size_t column_height = win_h/(t*cos(angle - plr_a));
 					put_rectangle(&all, i, win_h/2 - column_height*0.5, i + 1, win_h/2 + column_height*0.5, 0x0000FF00);
 					break;
 				}
@@ -66,14 +66,36 @@ int start_game(t_data *data) {
 //		all.win = &win;
 //		sleep(1);
 	}
-	void    *img;
-	char    *relative_path = "./src/textures/east.xpm";
-	int     img_width;
-	int     img_height;
+//	int32_t *img;
+	char *relative_path = "./src/textures/east.xpm";
+	int img_width;
+	int img_height;
 
-//	img = mlx_xpm_file_to_image(all.win->mlx, relative_path, &img_width, &img_height);
-//	for(int x = 0; x<64 ; x++)
-//		for(int y = 0; y<)
+	typedef struct	s_img
+	{
+		void		*ptr;
+		int			*data;
+		int			bpp;
+		int			endian;
+		int			size_l;
+		int			width;
+		int			height;
+	}				t_img;
+	t_img img;
+	int color;
 
+//	dt = mlx_xpm_file_to_image(all.win->mlx, relative_path, &img_width, &img_height);
+//	dt = (int*)mlx_get_data_addr(img,&bpp, &data->weapon.size_l, &data->weapon.endian);
+	img.ptr = mlx_xpm_file_to_image(all.win->mlx, relative_path,
+											 &img.width, &img.height);
+	img.data = (int*)mlx_get_data_addr(img.ptr,
+												&img.bpp, &img.size_l, &img.endian);
+	for (int x = 0; x < 64; x++)
+		for (int y = 0; y < 64; y++) {
+			color = img.data[(int)((int)x + (int)y *
+				(img.width))];
+			pixel_put(&all, x+50, y+50, color);
+		}
+	mlx_put_image_to_window(all.win->mlx, all.win->win, all.win->img, 0, 0);
 	mlx_loop(win.mlx);
 }

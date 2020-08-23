@@ -118,6 +118,7 @@ void        verify_map(t_data *data);
 void		pixel_put(t_all *data, int x, int y, int color);
 void		put_rectangle(t_all *all, int start_x, int start_y, int end_x, int end_y, int color);
 int			start_game(t_data *data);
+void            pixel_put(t_all *data, int x, int y, int color);
 
 
 #endif
