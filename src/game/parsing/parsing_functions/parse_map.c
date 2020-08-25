@@ -30,7 +30,7 @@ static int	check_and_counting_lines(int idx, t_data *data, size_t *max)
 			len = ft_strlen(lines[idx]);
 			*max = (len > *max) ? len : *max;
 		}
-		else if (!symbols_in_str(lines[idx], " ") || *(lines[idx]) == '\0')
+		else if (!symbols_in_str(lines[idx], " 2") || *(lines[idx]) == '\0')
 			data->map_finish = 1;
 		else
 			data->error = 3;

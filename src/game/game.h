@@ -6,7 +6,7 @@
 #define LIGAL_R_SIMBOLS "R 1234567890"
 #define LIGAL_F_SIMBOLS "F, 1234567890"
 #define LIGAL_C_SIMBOLS "C, 1234567890"
-#define LIGAL_MAP_SIMBOLS " 10NSEW"
+#define LIGAL_MAP_SIMBOLS " 120NSEW"
 #define SIZE 8
 #include "../gnl/get_next_line.h"
 #include "../libft/libft.h"
@@ -41,7 +41,7 @@ typedef struct s_data
     int	map_line_count;
     int map_rows_count;
     char orientation;
-    int	position[2];
+    float	position[2];
 	int map_start;
 	int map_finish;
     char **data_lines;
@@ -69,12 +69,20 @@ typedef struct		s_plr
 	float	player_end;
 }					t_plr;
 
+typedef struct		s_player
+{
+	float	x;
+	float	y;
+	float	fov;
+	float 	speed;
+	float 	step;
+}					t_player;
+
 typedef struct		s_place
 {
 	float	x;
 	float	y;
 	float	fov;
-	float		dist;
 }					t_place;
 
 typedef struct		s_key
@@ -87,12 +95,27 @@ typedef struct		s_key
 	int		r_arrow;
 }					t_key;
 
+typedef struct	s_img
+{
+	void		*ptr;
+	int			*data;
+	int			bpp;
+	int			endian;
+	int			size_l;
+	int			width;
+	int			height;
+}				t_img;
+
 typedef struct		s_all
 {
 	t_plr	*plr;
 	t_win	*win;
 	t_key	*key;
 	char	**map;
+	t_img	textures[255];
+	t_img	sprite;
+	t_player player;
+	int 	error;
 }					t_all;
 
 
@@ -115,10 +138,10 @@ void		parse_undefined_line(char *str, t_data *data);
 void		check_first_part_fill(t_data *data);
 void 		parse_map(int start_idx, t_data *data);
 void        verify_map(t_data *data);
+int			init_data(t_data *data, t_all *all);
 void		pixel_put(t_all *data, int x, int y, int color);
 void		put_rectangle(t_all *all, int start_x, int start_y, int end_x, int end_y, int color);
 int			start_game(t_data *data);
-void            pixel_put(t_all *data, int x, int y, int color);
 
 
 #endif

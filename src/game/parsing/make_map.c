@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 23:09:28 by charmon           #+#    #+#             */
-/*   Updated: 2020/08/12 21:36:56 by charmon          ###   ########.fr       */
+/*   Updated: 2020/08/25 21:38:29 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,17 @@ int		make_map(char *file, t_data *data)
 	if (data->error)
 		ft_putstr_fd("Error read file\n", 1);
 	else
+	{
 		ft_putstr_fd("Read file completed\n", 1);
-	parsing(data);
+		parsing(data);
+	}
 	if (!data->error)
 		ft_putstr_fd("Settings successful loaded\n", 1);
+	else
+	{
+		ft_putstr_fd("Parsing fail. Map incorrect\n", 1);
+		clear_2x_list(data->map);
+		clear_2x_list(data->data_lines);
+	}
 	return (data->error);
 }
