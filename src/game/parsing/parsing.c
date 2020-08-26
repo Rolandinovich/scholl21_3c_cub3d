@@ -47,19 +47,19 @@ int			parsing(t_data *data)
 	idx = parsing_first_part(data, -1);
 	if (data->error > 0)
 	{
-		ft_putstr_fd("Error parsing or verify params\n", 1);
+		ft_putstr_fd("Error\n parsing or verify params\n", 1);
 		return (data->error);
 	}
 	parse_map(idx, data);
 	if (data->error > 0)
 	{
-		ft_putstr_fd("Error parsing or verify map\n", 1);
+		ft_putstr_fd("Error\n parsing or verify map\n", 1);
 		return (data->error);
 	}
 	verify_map(data);
 	if (data->error > 0)
 	{
-		ft_putstr_fd("Error verify map\n", 1);
+		ft_putstr_fd("Error\n verify map\n", 1);
 		return (data->error);
 	}
 	return (data->error);

@@ -79,7 +79,7 @@ void		verify_map(t_data *data)
 				data->position[0] = idx_x;
 				data->position[1] = idx_y;
 			}
-			if (data->map[idx_y][idx_x] == '0')
+			if (ft_strchr("0NSWE",data->map[idx_y][idx_x]))
 			{
 				checking_border_x(data, idx_x, idx_y);
 				checking_border_y(data, idx_x, idx_y);

@@ -17,7 +17,7 @@ int		make_map(char *file, t_data *data)
 	data_init(data);
 	load_data(file, data);
 	if (data->error)
-		ft_putstr_fd("Error read file\n", 1);
+		ft_putstr_fd("Error\n read file\n", 1);
 	else
 	{
 		ft_putstr_fd("Read file completed\n", 1);
@@ -27,7 +27,7 @@ int		make_map(char *file, t_data *data)
 		ft_putstr_fd("Settings successful loaded\n", 1);
 	else
 	{
-		ft_putstr_fd("Parsing fail. Map incorrect\n", 1);
+		ft_putstr_fd("Error\nParsing fail. Map incorrect\n", 1);
 		clear_2x_list(data->map);
 		clear_2x_list(data->data_lines);
 	}

@@ -33,7 +33,10 @@ void		parsing_r(char *str, t_data *data)
 	}
 	(*data).r[0] = ft_atoi(list[1]);
 	(*data).r[1] = ft_atoi(list[2]);
-	(*data).error = 0;
+	if ((*data).r[0] < 0 || (*data).r[1] < 0)
+		(*data).error = 3;
+	else
+		(*data).error = 0;
 	clear_2x_list(list);
 	(*data).r_fill = 1;
 }

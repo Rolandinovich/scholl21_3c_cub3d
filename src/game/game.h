@@ -41,7 +41,7 @@ typedef struct s_data
     int	map_line_count;
     int map_rows_count;
     char orientation;
-    float	position[2];
+    double 	position[2];
 	int map_start;
 	int map_finish;
     char **data_lines;
@@ -71,11 +71,12 @@ typedef struct		s_plr
 
 typedef struct		s_player
 {
-	float	x;
-	float	y;
-	float	fov;
-	float 	speed;
-	float 	step;
+	double 	x;
+	double	y;
+	double	fov;
+	double	direction;
+	double 	speed;
+	double 	step;
 }					t_player;
 
 typedef struct		s_place
@@ -138,7 +139,7 @@ void		parse_undefined_line(char *str, t_data *data);
 void		check_first_part_fill(t_data *data);
 void 		parse_map(int start_idx, t_data *data);
 void        verify_map(t_data *data);
-int			init_data(t_data *data, t_all *all);
+int			init_data_1(t_data *data, t_all *all);
 void		pixel_put(t_all *data, int x, int y, int color);
 void		put_rectangle(t_all *all, int start_x, int start_y, int end_x, int end_y, int color);
 int			start_game(t_data *data);
