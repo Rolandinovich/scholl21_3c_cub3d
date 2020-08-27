@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 21:40:59 by charmon           #+#    #+#             */
-/*   Updated: 2020/08/26 22:26:13 by charmon          ###   ########.fr       */
+/*   Updated: 2020/08/27 21:13:42 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ int	init_data_1(t_data *data, t_all *all)
 		all->player.direction = M_PI / 2;
 	else if (data->orientation == 'W')
 		all->player.direction = M_PI;
+	all->color_f = (data->f[0] << 16) + (data->f[1] << 8) + (data->f[2]);
+	all->color_c = (data->c[0] << 16) + (data->c[1] << 8) + (data->c[2]);
 	init_mlx(data, all);
 	init_texture_1(data, all);
 	init_texture_2(data, all);

@@ -29,7 +29,7 @@ int		make_map(char *file, t_data *data)
 	{
 		ft_putstr_fd("Error\nParsing fail. Map incorrect\n", 1);
 		clear_2x_list(data->map);
-		clear_2x_list(data->data_lines);
 	}
+	clear_2x_list(data->data_lines);
 	return (data->error);
 }

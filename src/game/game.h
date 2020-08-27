@@ -117,6 +117,8 @@ typedef struct		s_all
 	t_img	sprite;
 	t_player player;
 	int 	error;
+	int		color_f;
+	int		color_c;
 }					t_all;
 
 
