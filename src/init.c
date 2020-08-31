@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 21:40:59 by charmon           #+#    #+#             */
-/*   Updated: 2020/08/27 21:13:42 by charmon          ###   ########.fr       */
+/*   Updated: 2020/08/31 20:13:14 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ int	init_sprite(t_data *data, t_all *all)
 
 int	init_data_1(t_data *data, t_all *all)
 {
+	all->win_h = data->r[1];
+	all->win_w = data->r[0];
 	all->error = 0;
 	all->map = data->map;
 	all->player.x = data->position[0] + .5;
@@ -99,13 +101,13 @@ int	init_data_1(t_data *data, t_all *all)
 	all->player.speed = 0.1;
 	all->player.step = 0.1;
 	if (data->orientation == 'N')
-		all->player.direction = 3. * M_PI / 2.;
+		all->player.dir = 3. * M_PI / 2.;
 	else if (data->orientation == 'E')
-		all->player.direction = 0;
+		all->player.dir = 0;
 	else if (data->orientation == 'S')
-		all->player.direction = M_PI / 2;
+		all->player.dir = M_PI / 2;
 	else if (data->orientation == 'W')
-		all->player.direction = M_PI;
+		all->player.dir = M_PI;
 	all->color_f = (data->f[0] << 16) + (data->f[1] << 8) + (data->f[2]);
 	all->color_c = (data->c[0] << 16) + (data->c[1] << 8) + (data->c[2]);
 	init_mlx(data, all);

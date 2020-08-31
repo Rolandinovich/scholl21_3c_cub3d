@@ -8,7 +8,9 @@ SRCS			=	src/gnl/get_next_line.c src/gnl/get_next_line_utils.c \
 					src/game/parsing/parsing_functions/parse_undefine_line.c \
 					src/game/parsing/parsing_functions/parse_we.c src/game/parsing/parsing_functions/verify_map.c \
 					src/game/parsing/parsing_functions/utils.c src/game/parsing/parsing_functions/parse_map.c \
-					src/game/play.c  src/game/utils/draw.c src/init.c
+					src/init.c src/game/draw/draw_circle.c\
+					src/game/draw/draw_utils.c
+
 OBJS			= $(SRCS:.c=.o)
 
 CC				= gcc

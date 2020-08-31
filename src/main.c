@@ -21,6 +21,7 @@ int			main(int argc, char **argv)
 	!(make_map(argv[1], &data)) &&
 	!(init_data_1(&data, &all))))
 		return (0);
-	start_game(&data);
+	draw_circle(all);
+	mlx_loop(all.win->mlx);
 	return (0);
 }

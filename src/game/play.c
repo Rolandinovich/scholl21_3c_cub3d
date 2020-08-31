@@ -1,6 +1,6 @@
 #include "game.h"
 
-int start_game(t_data *data) {
+int start_game!!(t_data *data) {
 	t_plr plr;
 	t_key key;
 	t_win win;

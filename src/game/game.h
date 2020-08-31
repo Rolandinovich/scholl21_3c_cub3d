@@ -74,7 +74,7 @@ typedef struct		s_player
 	double 	x;
 	double	y;
 	double	fov;
-	double	direction;
+	double	dir;
 	double 	speed;
 	double 	step;
 }					t_player;
@@ -109,8 +109,9 @@ typedef struct	s_img
 
 typedef struct		s_all
 {
-	t_plr	*plr;
 	t_win	*win;
+	int 	win_w;
+	int 	win_h;
 	t_key	*key;
 	char	**map;
 	t_img	textures[255];
@@ -144,7 +145,9 @@ void        verify_map(t_data *data);
 int			init_data_1(t_data *data, t_all *all);
 void		pixel_put(t_all *data, int x, int y, int color);
 void		put_rectangle(t_all *all, int start_x, int start_y, int end_x, int end_y, int color);
-int			start_game(t_data *data);
+void		draw_circle(t_all all);
+float		calc_distance(t_all all, float agile, char c);
+void 		draw_f_c(t_all all);
 
 
 #endif
