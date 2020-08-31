@@ -146,7 +146,8 @@ int			init_data_1(t_data *data, t_all *all);
 void		pixel_put(t_all *data, int x, int y, int color);
 void		put_rectangle(t_all *all, int start_x, int start_y, int end_x, int end_y, int color);
 void		draw_circle(t_all all);
-float		calc_distance(t_all all, float agile, char c);
+float		calc_text_distance(t_all all, float agile, char *texture, float *textcord);
+float		calc_sprite_distance(t_all all, float agile);
 void 		draw_f_c(t_all all);
 
 

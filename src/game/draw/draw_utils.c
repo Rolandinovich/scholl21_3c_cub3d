@@ -1,6 +1,44 @@
 #include "../game.h"
 
-float	calc_distance(t_all all, float agile, char c)
+float	calc_text_distance(t_all all, float agile, char *texture, float *textcord)
+{
+	float		t;
+	t_player	plr;
+	float hit_x;
+	float hit_y;
+	float cx;
+	float cy;
+
+	plr = all.player;
+	t = 0;
+	while (t < 10)
+	{
+		cx = plr.x + t*cos(agile);
+		cy = plr.y + t*sin(agile);
+		t += 0.01;
+		if (all.map[(int)cy][(int)cx] == '1')
+		{
+			hit_x = cx - floor(cx+.5);
+			hit_y = cy - floor(cy+.5);
+			if (fabs(hit_x) > fabs(hit_y))
+			{
+				*textcord = hit_x*all.sprite.width;
+				*texture = (agile > M_PI) ? 'N' : 'S';
+			}
+			else
+			{
+				*textcord = hit_y*all.sprite.width;
+				*texture = (agile > 3 * M_PI/2 || agile < M_PI/2) ? 'W' : 'E';
+			}
+			if (*textcord < 0)
+				*textcord += all.sprite.width;
+			return (all.win_w/(t*cos(agile-all.player.dir)));
+		}
+	}
+	return (-1);
+}
+
+float	calc_sprite_distance(t_all all, float agile)
 {
 	float		t;
 	float		cx;
@@ -13,8 +51,10 @@ float	calc_distance(t_all all, float agile, char c)
 	{
 		cx = plr.x + t*cos(agile);
 		cy = plr.y + t*sin(agile);
-		t += 0.1;
-		if (all.map[(int)cy][(int)cx] == c)
+		t += 0.01;
+		if (all.map[(int)cy][(int)cx] == '1')
+			break;
+		if (all.map[(int)cy][(int)cx] == '2')
 			return (all.win_h/(t*cos(agile - plr.dir)));
 	}
 	return (-1);
@@ -30,7 +70,8 @@ void            pixel_put(t_all *data, int x, int y, int color)
 {
 	char    *dst;
 
-	dst = data->win->addr + (y * data->win->line_length + x * (data->win->bits_per_pixel / 8));
+	dst = data->win->addr + (y * data->win->line_length + \
+	x * (data->win->bits_per_pixel / 8));
 	*(int*)dst = color;
 }
 
