@@ -87,7 +87,7 @@ void	draw_sprites(t_all all)
 
 void	draw_circle(t_all all)
 {
-	for (all.player.dir = 3.1; all.player.dir <= M_PI*2; all.player.dir +=0.01)
+	for (all.player.dir = 3.1; all.player.dir <= M_PI*2; all.player.dir +=0.001)
 	{
 		draw_f_c(all);
 		draw_textures(all);

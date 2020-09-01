@@ -1,78 +1,74 @@
 #include "../game.h"
 
-float	calc_text_distance(t_all all, float agile, char *texture, float *textcord)
+char 	text_distance(t_all all, float cx, float cy,  float *cord, float agile)
+{
+	char texture;
+
+	cx = cx - floor(cx+.5);
+	cy = cy - floor(cy+.5);
+	if (fabs(cx) > fabs(cy))
+	{
+		texture = (agile > M_PI) ? 'N' : 'S';
+		*cord = cx*all.textures[texture].width;
+	}
+	else
+	{
+		texture = (agile > 3 * M_PI/2 || agile < M_PI/2) ? 'W' : 'E';
+		*cord = cy*all.textures[texture].width;
+	}
+	if (*cord < 0)
+		*cord += all.textures[texture].width;
+	return (texture);
+}
+
+float	calc_text_distance(t_all all, float agile, char *texture, float *cord)
 {
 	float		t;
-	float hit_x;
-	float hit_y;
 	float cx;
 	float cy;
 
 	t = 0;
-	while (t < 10)
+	while (t < 20)
 	{
 		cx = all.player.x + t*cos(agile);
 		cy = all.player.y + t*sin(agile);
 		t += 0.01;
 		if (all.map[(int)cy][(int)cx] == '1')
 		{
-			hit_x = cx - floor(cx+.5);
-			hit_y = cy - floor(cy+.5);
-			if (fabs(hit_x) > fabs(hit_y))
-			{
-				*texture = (agile > M_PI) ? 'N' : 'S';
-				*textcord = hit_x*all.textures[*texture].width;
-			}
-			else
-			{
-				*texture = (agile > 3 * M_PI/2 || agile < M_PI/2) ? 'W' : 'E';
-				*textcord = hit_y*all.textures[*texture].width;
-			}
-			if (*textcord < 0)
-				*textcord += all.sprite.width;
+			*texture = text_distance(all, cx, cy, cord, agile);
 			return (all.win_w/(t*cos(agile-all.player.dir)));
-		}
-	}	return (-1);
-}
-
-float	calc_sprite_distance(t_all all, float agile, float *textcord)
-{
-	float		t;
-	float		cx;
-	float		cy;
-	t_player	plr;
-	float hit_x;
-	float hit_y;
-
-	plr = all.player;
-	t = 0;
-	while (t < 10)
-	{
-		cx = plr.x + t*cos(agile);
-		cy = plr.y + t*sin(agile);
-		t += 0.01;
-		if (all.map[(int)cy][(int)cx] == '1')
-			break;
-		if (all.map[(int)cy][(int)cx] == '2')
-		{
-			hit_x = cx - floor(cx+.5);
-			hit_y = cy - floor(cy+.5);
-			if (fabs(hit_x) > fabs(hit_y))
-				*textcord = hit_x*all.sprite.width;
-			else
-				*textcord = hit_y*all.sprite.width;
-			if (*textcord < 0)
-				*textcord += all.sprite.width;
-			return (all.win_h/(t*cos(agile - plr.dir)));
 		}
 	}
 	return (-1);
 }
 
-void draw_f_c(t_all all)
+float	calc_sprite_distance(t_all all, float agile, float *cord)
 {
-	put_rectangle(&all, 0, 0, all.win_w,all.win_h/2, all.color_c);
-	put_rectangle(&all, 0,all.win_h/2, all.win_w,all.win_h, all.color_f);
+	float		t;
+	float		cx;
+	float		cy;
+
+	t = 0;
+	while (t < 20)
+	{
+		cx = all.player.x + t*cos(agile);
+		cy = all.player.y + t*sin(agile);
+		t += 0.01;
+		if (all.map[(int)cy][(int)cx] == '1')
+			break;
+		if (all.map[(int)cy][(int)cx] == '2')
+		{
+			cx = cx - floor(cx+.5);
+			cy = cy - floor(cy+.5);
+			if (fabs(cx) > fabs(cy))
+				*cord = cx*all.sprite.width;
+			else
+				*cord = cy*all.sprite.width;
+			*cord = (*cord < 0) ? *cord + all.sprite.width : *cord;
+			return (all.win_h/(t*cos(agile - all.player.dir)));
+		}
+	}
+	return (-1);
 }
 
 void            pixel_put(t_all *data, int x, int y, int color)
@@ -86,20 +82,20 @@ void            pixel_put(t_all *data, int x, int y, int color)
 	*(int*)dst = color;
 }
 
-void	put_rectangle(t_all *all, int start_x,
-				   int start_y, int end_x, int end_y, int color)
+void draw_f_c(t_all all)
 {
 	int x;
-	x = start_x;
-	if (start_y<0)
-		start_y = 0;
-	if (end_y > all->win_h)
-		end_y = all->win_h;
-	while (start_y < end_y)
+	int y;
+
+	x = 0;
+	while (x < all.win_w)
 	{
-		while (start_x < end_x)
-			pixel_put(all, start_x++, start_y, color);
-		start_x = x;
-		start_y += 1;
+		y = 0;
+		while (y < all.win_h)
+			if (y < all.win_h/2)
+				pixel_put(&all, x, y++, all.color_c);
+			else
+				pixel_put(&all, x, y++, all.color_f);
+		x++;
 	}
 }
