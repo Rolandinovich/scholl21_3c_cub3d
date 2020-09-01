@@ -3,18 +3,16 @@
 float	calc_text_distance(t_all all, float agile, char *texture, float *textcord)
 {
 	float		t;
-	t_player	plr;
 	float hit_x;
 	float hit_y;
 	float cx;
 	float cy;
 
-	plr = all.player;
 	t = 0;
 	while (t < 10)
 	{
-		cx = plr.x + t*cos(agile);
-		cy = plr.y + t*sin(agile);
+		cx = all.player.x + t*cos(agile);
+		cy = all.player.y + t*sin(agile);
 		t += 0.01;
 		if (all.map[(int)cy][(int)cx] == '1')
 		{
@@ -22,20 +20,19 @@ float	calc_text_distance(t_all all, float agile, char *texture, float *textcord)
 			hit_y = cy - floor(cy+.5);
 			if (fabs(hit_x) > fabs(hit_y))
 			{
-				*textcord = hit_x*all.sprite.width;
 				*texture = (agile > M_PI) ? 'N' : 'S';
+				*textcord = hit_x*all.textures[*texture].width;
 			}
 			else
 			{
-				*textcord = hit_y*all.sprite.width;
 				*texture = (agile > 3 * M_PI/2 || agile < M_PI/2) ? 'W' : 'E';
+				*textcord = hit_y*all.textures[*texture].width;
 			}
 			if (*textcord < 0)
 				*textcord += all.sprite.width;
 			return (all.win_w/(t*cos(agile-all.player.dir)));
 		}
-	}
-	return (-1);
+	}	return (-1);
 }
 
 float	calc_sprite_distance(t_all all, float agile, float *textcord)
