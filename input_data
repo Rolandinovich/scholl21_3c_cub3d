@@ -1,10 +1,10 @@
-R 700 512
+R 900 512
 
 NO ./src/textures/north.xpm
 SO ./src/textures/south.xpm
 WE ./src/textures/west.xpm
 EA ./src/textures/east.xpm
-S ./path_to_the_sprite_texture
+S ./src/textures/pillar.xpm
 F 220,100,0
 C 225,30,0
 

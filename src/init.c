@@ -78,7 +78,7 @@ int	init_texture_2(t_data *data, t_all *all)
 
 int	init_sprite(t_data *data, t_all *all)
 {
-	all->sprite.ptr = mlx_xpm_file_to_image(all->win->mlx, data->no,
+	all->sprite.ptr = mlx_xpm_file_to_image(all->win->mlx, data->s,
 	&(all->sprite.width), &(all->sprite.height));
 	if (all->sprite.ptr)
 		all->sprite.data = (int*)mlx_get_data_addr(

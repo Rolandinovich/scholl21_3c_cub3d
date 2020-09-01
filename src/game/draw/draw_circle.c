@@ -1,18 +1,22 @@
 #include "../game.h"
 
-void	texture_column(t_img img, int *column, int column_height, const size_t texcoord)
+void	texture_column(t_all all, t_img img, int column_height, const size_t texcoord, size_t win_x)
 {
 	size_t y;
 	size_t pix_x;
 	size_t pix_y;
+	size_t win_y;
 
 	y = 0;
 	while(y<column_height)
 	{
 		pix_x = texcoord;
 		pix_y = (y*img.height)/column_height;
-		column[y] = img.data[(int)((int)pix_x + (int)pix_y *
-			(img.width))];
+		win_y = y + all.win_h/2-column_height/2;
+		if ((win_y < 0 || win_y >= all.win_h) && (y += 1))
+			continue;
+		pixel_put(&all, win_x, win_y,img.data[(int)((int)pix_x + (int)pix_y *
+			(img.width))]);
 		y++;
 	}
 }
@@ -21,33 +25,18 @@ void	draw_textures(t_all all)
 {
 	float agile;
 	size_t i;
-	int j;
 	t_player plr;
 	size_t column_height;
 	char texture;
-	int column[all.win_h];
 	float textcord;
-	int pix_y;
 
-	i = 530;
+	i = 0;
 	plr = all.player;
 	while (i < all.win_w)
 	{
 		agile = plr.dir - plr.fov/2 + plr.fov * i / (float)all.win_w;
 		column_height = calc_text_distance(all, agile, &texture, &textcord);
-		texture_column(all.textures[texture], column, column_height, textcord);
-		j = 0;
-		while (j < column_height)
-		{
-			pix_y = j + all.win_h/2-column_height/2;
-			if (pix_y < 0 || pix_y >= all.win_h)
-			{
-				j++;
-				continue;
-			}
-			pixel_put(&all, i, pix_y,column[j]);
-			j++;
-		}
+		texture_column(all, all.textures[texture],column_height, textcord, i);
 		i++;
 	}
 }
@@ -57,7 +46,8 @@ void	draw_sprites(t_all all)
 	float agile;
 	size_t i;
 	t_player plr;
-	size_t column_height;
+	int column_height;
+	float textcord;
 
 	i = 0;
 	plr = all.player;
@@ -65,9 +55,8 @@ void	draw_sprites(t_all all)
 	{
 		agile = plr.dir - plr.fov/2 + plr.fov * i / (float)all.win_w;
 		column_height = calc_sprite_distance(all, agile);
-		if (column_height != -1)
-			put_rectangle(&all, i, all.win_h/2 - column_height*0.3,\
-			i + 1, all.win_h/2 + column_height*0.6, 0xCCCCCCCC);
+		if (column_height > 0)
+			texture_column(all, all.sprite, column_height, textcord, i);
 		i++;
 	}
 }
