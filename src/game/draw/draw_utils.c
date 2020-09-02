@@ -82,20 +82,24 @@ void            pixel_put(t_all *data, int x, int y, int color)
 	*(int*)dst = color;
 }
 
-void draw_f_c(t_all all)
+void draw_f_c(t_all all, int column_height, size_t win_x)
 {
 	int x;
 	int y;
+	int min;
+	int max;
 
-	x = 0;
-	while (x < all.win_w)
-	{
-		y = 0;
-		while (y < all.win_h)
+	min = all.win_h/2 - column_height/2;
+	max = all.win_h/2 + column_height/2;
+	y = all.win_h;
+	while (y >= 0)
+		if (y > max || y < min)
+		{
 			if (y < all.win_h/2)
-				pixel_put(&all, x, y++, all.color_c);
+				pixel_put(&all, win_x, y--, all.color_c);
 			else
-				pixel_put(&all, x, y++, all.color_f);
-		x++;
-	}
+				pixel_put(&all, win_x, y--, all.color_f);
+		}
+		else
+			y--;
 }

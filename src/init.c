@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 21:40:59 by charmon           #+#    #+#             */
-/*   Updated: 2020/08/31 20:13:14 by charmon          ###   ########.fr       */
+/*   Updated: 2020/09/02 21:31:34 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,6 @@ int	init_sprite(t_data *data, t_all *all)
 			&(all->sprite.size_l), &(all->sprite.endian));
 	else
 		return ((all->error = 1));
-	return (0);
-}
-
-int	init_data_1(t_data *data, t_all *all)
-{
 	all->win_h = data->r[1];
 	all->win_w = data->r[0];
 	all->error = 0;
@@ -102,6 +97,11 @@ int	init_data_1(t_data *data, t_all *all)
 	all->player.fov_step = 0.1;
 	all->key.toward = 0;
 	all->key.backward = 0;
+	return (0);
+}
+
+int	init_data_1(t_data *data, t_all *all)
+{
 	all->key.left = 0;
 	all->key.right = 0;
 	all->key.turn_left = 0;

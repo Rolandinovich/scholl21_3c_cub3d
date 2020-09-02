@@ -2,12 +2,13 @@
 
 void	texture_column(t_all all, t_img img, int column_height, const size_t texcoord, size_t win_x)
 {
-	size_t y;
+	int y;
 	size_t pix_x;
 	size_t pix_y;
 	size_t win_y;
 
 	y = 0;
+	draw_f_c(all, column_height,win_x);
 	while(y<column_height)
 	{
 		pix_x = texcoord;
@@ -39,7 +40,7 @@ void	sprite_column(t_all all, t_img img, int column_height, const size_t texcoor
 			continue;
 		color = img.data[(int)((int)pix_x + (int)pix_y * (img.width))];
 		if (color != 9961608)
-			pixel_put(&all, win_x, win_y + 20, color);
+			pixel_put(&all, win_x , win_y + 0.2 *column_height, color);
 		y++;
 	}
 }
@@ -87,11 +88,10 @@ void	draw_sprites(t_all all)
 
 void	draw_circle(t_all all)
 {
-//	for (all.player.dir = 3.1; all.player.dir <= M_PI*2; all.player.dir +=0.001)
-//	{
-		draw_f_c(all);
+//		mlx_clear_window(all.win->mlx, all.win->win);
+//		draw_f_c(all);
+//		mlx_put_image_to_window(all.win->mlx, all.win->win, all.win->img, 0, 0);
 		draw_textures(all);
 		draw_sprites(all);
 		mlx_put_image_to_window(all.win->mlx, all.win->win, all.win->img, 0, 0);
-//	}
 }

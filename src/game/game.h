@@ -8,7 +8,7 @@
 #define LIGAL_C_SIMBOLS "C, 1234567890"
 #define LIGAL_MAP_SIMBOLS " 120NSEW"
 #define SIZE 8
-#define ESC 53
+#define ESC 65307
 #define TOWARD 119
 #define BACKWARD 115
 #define LEFT 97
@@ -137,7 +137,7 @@ void		pixel_put(t_all *data, int x, int y, int color);
 void		draw_circle(t_all all);
 float		calc_text_distance(t_all all, float agile, char *texture, float *textcord);
 float		calc_sprite_distance(t_all all, float agile, float *textcord);
-void 		draw_f_c(t_all all);
+void 		draw_f_c(t_all all,int column_height, size_t win_x);
 void		move_forward(t_all *all);
 void		move_backward(t_all *all);
 void		move_left(t_all *all);
