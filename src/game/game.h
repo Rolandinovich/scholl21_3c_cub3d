@@ -8,6 +8,13 @@
 #define LIGAL_C_SIMBOLS "C, 1234567890"
 #define LIGAL_MAP_SIMBOLS " 120NSEW"
 #define SIZE 8
+# define ESC 53
+# define TOWARD 13
+# define BACKWARD 1
+# define LEFT 0
+# define RIGHT 2
+# define CAM_LEFT 123
+# define CAM_RIGHT 124
 #include "../gnl/get_next_line.h"
 #include "../libft/libft.h"
 #include "../minilibx_ubuntu/mlx.h"
@@ -59,16 +66,6 @@ typedef struct		s_win
 	int		line_length;
 }					t_win;
 
-typedef struct		s_plr
-{
-	int		player_x;
-	int		player_y;
-	float	player_a;
-	float	angel;
-	float	player_start;
-	float	player_end;
-}					t_plr;
-
 typedef struct		s_player
 {
 	double 	x;
@@ -76,24 +73,17 @@ typedef struct		s_player
 	double	fov;
 	double	dir;
 	double 	speed;
-	double 	step;
+	double 	fov_step;
 }					t_player;
-
-typedef struct		s_place
-{
-	float	x;
-	float	y;
-	float	fov;
-}					t_place;
 
 typedef struct		s_key
 {
-	int		w;
-	int		s;
-	int		a;
-	int		d;
-	int		l_arrow;
-	int		r_arrow;
+	int		toward;
+	int		backward;
+	int		left;
+	int		right;
+	int		turn_left;
+	int		turn_right;
 }					t_key;
 
 typedef struct	s_img
@@ -144,11 +134,22 @@ void 		parse_map(int start_idx, t_data *data);
 void        verify_map(t_data *data);
 int			init_data_1(t_data *data, t_all *all);
 void		pixel_put(t_all *data, int x, int y, int color);
-//void		put_rectangle(t_all *all, int start_x, int start_y, int end_x, int end_y, int color);
 void		draw_circle(t_all all);
 float		calc_text_distance(t_all all, float agile, char *texture, float *textcord);
 float		calc_sprite_distance(t_all all, float agile, float *textcord);
 void 		draw_f_c(t_all all);
+void		move_forward(t_all all);
+void		move_backward(t_all all);
+void		move_left(t_all all);
+void		move_right(t_all all);
+int			key_manager(t_all *all);
+int			event_key_released(	int key,	void *param);
+int			event_key_pressed(	int key,	void *param);
+int			event_destroy_window(void *param);
+void		close_win(int mod, t_all *all, char *msg);
+int			event_destroy_window(void *param);
+int			loop_manager(void *param);
+
 
 
 #endif
