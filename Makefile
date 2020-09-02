@@ -8,8 +8,8 @@ SRCS			=	src/gnl/get_next_line.c src/gnl/get_next_line_utils.c \
 					src/game/parsing/parsing_functions/parse_undefine_line.c \
 					src/game/parsing/parsing_functions/parse_we.c src/game/parsing/parsing_functions/verify_map.c \
 					src/game/parsing/parsing_functions/utils.c src/game/parsing/parsing_functions/parse_map.c \
-					src/init.c src/game/draw/draw_circle.c\
-					src/game/draw/draw_utils.c
+					src/init.c src/game/draw/draw_circle.c src/game/managers/key_manager.c src/game/managers/loop_manager.c \
+					src/game/draw/draw_utils.c src/game/managers/moving_asdw.c src/game/managers/windows_manager.c
 
 OBJS			= $(SRCS:.c=.o)
 

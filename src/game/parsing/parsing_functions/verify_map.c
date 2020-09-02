@@ -76,6 +76,7 @@ void		verify_map(t_data *data)
 				if (data->orientation)
 					data->error = 3;
 				data->orientation = data->map[idx_y][idx_x];
+				data->map[idx_y][idx_x] = '0';
 				data->position[0] = idx_x;
 				data->position[1] = idx_y;
 			}

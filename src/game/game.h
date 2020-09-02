@@ -8,13 +8,13 @@
 #define LIGAL_C_SIMBOLS "C, 1234567890"
 #define LIGAL_MAP_SIMBOLS " 120NSEW"
 #define SIZE 8
-# define ESC 53
-# define TOWARD 13
-# define BACKWARD 1
-# define LEFT 0
-# define RIGHT 2
-# define CAM_LEFT 123
-# define CAM_RIGHT 124
+#define ESC 53
+#define TOWARD 119
+#define BACKWARD 115
+#define LEFT 97
+#define RIGHT 100
+#define CAM_LEFT 65361
+#define CAM_RIGHT 65363
 #include "../gnl/get_next_line.h"
 #include "../libft/libft.h"
 #include "../minilibx_ubuntu/mlx.h"
@@ -102,7 +102,7 @@ typedef struct		s_all
 	t_win	*win;
 	int 	win_w;
 	int 	win_h;
-	t_key	*key;
+	t_key	key;
 	char	**map;
 	t_img	textures[255];
 	t_img	sprite;
@@ -138,10 +138,10 @@ void		draw_circle(t_all all);
 float		calc_text_distance(t_all all, float agile, char *texture, float *textcord);
 float		calc_sprite_distance(t_all all, float agile, float *textcord);
 void 		draw_f_c(t_all all);
-void		move_forward(t_all all);
-void		move_backward(t_all all);
-void		move_left(t_all all);
-void		move_right(t_all all);
+void		move_forward(t_all *all);
+void		move_backward(t_all *all);
+void		move_left(t_all *all);
+void		move_right(t_all *all);
 int			key_manager(t_all *all);
 int			event_key_released(	int key,	void *param);
 int			event_key_pressed(	int key,	void *param);

@@ -99,7 +99,13 @@ int	init_data_1(t_data *data, t_all *all)
 	all->player.y = data->position[1] + .5;
 	all->player.fov = M_PI / 3.;
 	all->player.speed = 0.1;
-	all->player.step = 0.1;
+	all->player.fov_step = 0.1;
+	all->key.toward = 0;
+	all->key.backward = 0;
+	all->key.left = 0;
+	all->key.right = 0;
+	all->key.turn_left = 0;
+	all->key.turn_right = 0;
 	if (data->orientation == 'N')
 		all->player.dir = 3. * M_PI / 2.;
 	else if (data->orientation == 'E')
