@@ -15,6 +15,10 @@ int		key_manager(t_all *all)
 		all->player.dir -= all->player.fov_step;
 	if (all->key.turn_right == 1)
 		all->player.dir += all->player.fov_step;
+	if (all->player.dir > 2* M_PI)
+		all->player.dir -= 2 * M_PI;
+	if (all->player.dir < 0)
+		all->player.dir = 2 * M_PI;
 	return (0);
 }
 
