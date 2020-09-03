@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 23:10:32 by charmon           #+#    #+#             */
-/*   Updated: 2020/09/02 20:37:14 by charmon          ###   ########.fr       */
+/*   Updated: 2020/09/03 09:31:39 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ int			count_lines(char *file, t_data *data)
 
 	data->error = 1;
 	if (!(fd = open(file, O_RDONLY)))
-	{
-		data->error = 1;
-		return (0);
-	}
+		return (-1);
 	count = 0;
 	while ((res = get_next_line(fd, &line)) >= 0)
 	{
@@ -34,7 +31,6 @@ int			count_lines(char *file, t_data *data)
 			break ;
 	}
 	data->error = 0;
-	close(fd);
 	return (count);
 }
 
@@ -45,8 +41,7 @@ void		load_data(char *file, t_data *data)
 	int		idx;
 
 	(*data).error = 1;
-	if (!(count = count_lines(file, data)))
-		return ;
+	count = count_lines(file, data);
 	if (!(data->data_lines = (char**)malloc(sizeof(char*) * (count + 1))))
 		return ;
 	idx = -1;

@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 23:09:33 by charmon           #+#    #+#             */
-/*   Updated: 2020/09/02 20:37:15 by charmon          ###   ########.fr       */
+/*   Updated: 2020/09/03 09:31:39 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,19 @@ int			parsing(t_data *data)
 	idx = parsing_first_part(data, -1);
 	if (data->error > 0)
 	{
-		ft_putstr_fd("Error\n parsing or verify params\n", 1);
+		ft_putstr_fd("Error parsing or verify params\n", 1);
 		return (data->error);
 	}
 	parse_map(idx, data);
 	if (data->error > 0)
 	{
-		ft_putstr_fd("Error\n parsing or verify map\n", 1);
+		ft_putstr_fd("Error parsing or verify map\n", 1);
 		return (data->error);
 	}
 	verify_map(data);
 	if (data->error > 0)
 	{
-		ft_putstr_fd("Error\n verify map\n", 1);
+		ft_putstr_fd("Error verify map\n", 1);
 		return (data->error);
 	}
 	return (data->error);

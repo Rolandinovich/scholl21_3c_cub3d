@@ -6,7 +6,7 @@
 /*   By: charmon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 20:04:04 by charmon           #+#    #+#             */
-/*   Updated: 2020/09/02 20:37:15 by charmon          ###   ########.fr       */
+/*   Updated: 2020/09/03 09:31:39 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void		verify_map(t_data *data)
 				data->position[0] = idx_x;
 				data->position[1] = idx_y;
 			}
-			if (ft_strchr("0NSWE",data->map[idx_y][idx_x]))
+			if (data->map[idx_y][idx_x] == '0')
 			{
 				checking_border_x(data, idx_x, idx_y);
 				checking_border_y(data, idx_x, idx_y);
