@@ -32,7 +32,7 @@ float	calc_text_distance(t_all all, float agile, char *texture, float *cord)
 	{
 		cx = all.player.x + t*cos(agile);
 		cy = all.player.y + t*sin(agile);
-		t += 0.02;
+		t += 0.01;
 		if (all.map[(int)cy][(int)cx] == '1')
 		{
 			while (all.map[(int)cy][(int)cx] == '1')
