@@ -97,6 +97,13 @@ typedef struct	s_img
 	int			height;
 }				t_img;
 
+typedef struct	s_sprites
+{
+	float			x;
+	float			y;
+	float			dist;
+}				t_sprites;
+
 typedef struct		s_all
 {
 	t_win	*win;
@@ -104,6 +111,9 @@ typedef struct		s_all
 	int 	win_h;
 	t_key	key;
 	char	**map;
+	float 	col_h[10000];
+	t_sprites 	sprites[10000];
+	int		sprite_c;
 	t_img	textures[255];
 	t_img	sprite;
 	t_player player;
@@ -149,6 +159,7 @@ int			event_destroy_window(void *param);
 void		close_win(int mod, t_all *all, char *msg);
 int			event_destroy_window(void *param);
 int			loop_manager(void *param);
+int			init_data_2(t_data *data, t_all *all);
 
 
 

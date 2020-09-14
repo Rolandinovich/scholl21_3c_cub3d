@@ -50,7 +50,6 @@ void	draw_textures(t_all all)
 	float agile;
 	size_t i;
 	t_player plr;
-	size_t column_height;
 	char texture;
 	float textcord;
 
@@ -59,8 +58,8 @@ void	draw_textures(t_all all)
 	while (i < all.win_w)
 	{
 		agile = plr.dir - plr.fov/2 + plr.fov * i / (float)all.win_w;
-		column_height = calc_text_distance(all, agile, &texture, &textcord);
-		texture_column(all, all.textures[texture],column_height, textcord, i);
+		all.col_h[i] = calc_text_distance(all, agile, &texture, &textcord);
+		texture_column(all, all.textures[texture], all.col_h[i], textcord, i);
 		i++;
 	}
 }

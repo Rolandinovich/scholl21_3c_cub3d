@@ -19,7 +19,8 @@ int			main(int argc, char **argv)
 
 	if (!((argc > 1) &&
 	!(make_map(argv[1], &data)) &&
-	!(init_data_1(&data, &all))))
+	!(init_data_1(&data, &all)) &&
+	!(init_data_2(&data, &all)) ))
 		return (0);
 	draw_circle(all);
 	mlx_hook(all.win->win, 2, 1L << 0, event_key_pressed, &all);
