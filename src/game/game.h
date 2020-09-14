@@ -160,6 +160,7 @@ void		close_win(int mod, t_all *all, char *msg);
 int			event_destroy_window(void *param);
 int			loop_manager(void *param);
 int			init_data_2(t_data *data, t_all *all);
+void 		update_sprite_distance(t_all all);
 
 
 

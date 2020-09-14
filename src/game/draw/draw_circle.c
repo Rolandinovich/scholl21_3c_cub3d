@@ -91,6 +91,7 @@ void	draw_circle(t_all all)
 //		draw_f_c(all);
 //		mlx_put_image_to_window(all.win->mlx, all.win->win, all.win->img, 0, 0);
 		draw_textures(all);
+		update_sprite_distance(all);
 		draw_sprites(all);
 		mlx_put_image_to_window(all.win->mlx, all.win->win, all.win->img, 0, 0);
 }
