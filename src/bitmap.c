@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: charmon <charmon@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 22:19:10 by charmon           #+#    #+#             *//*   Updated: 2020/09/14 22:24:51 by charmon          ###   ########.fr       */
+/*   Created: 2020/09/14 22:19:10 by charmon           #+#    #+#             *//*   Updated: 2020/09/14 22:24:58 by charmon          ###   ########.fr       */
 
 /*                                                                            */
 /* ************************************************************************** */
@@ -79,6 +79,6 @@ int				shot_screen(t_all *all)
 	make_header(bmp_fheader, bmpinfheader, all);
 	if (!write_in_header(bmp_fheader, bmpinfheader, all))
 		ft_putstr_fd("Saving screenshot failed!\n", 0);
-	close_win(0, all, " ");
+//	close_win(0, all, " ");
 	return (0);
 }
