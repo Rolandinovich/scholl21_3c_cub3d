@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 22:17:10 by charmon           #+#    #+#             */
-/*   Updated: 2020/09/14 22:17:10 by charmon          ###   ########.fr       */
+/*   Updated: 2020/09/14 22:59:59 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,27 @@ float	calc_text_distance(t_all all, float agile, char *texture, float *cord, flo
 	float		t;
 	float cx;
 	float cy;
+	int x;
+	int y;
 
 	t = 0;
 	while (t < 20)
 	{
+
 		cx = all.player.x + t*cos(agile);
 		cy = all.player.y + t*sin(agile);
 		t += 0.01;
 		if (all.map[(int)cy][(int)cx] == '1')
 		{
-			while (all.map[(int)cy][(int)cx] == '1')
+			while (all.map[(int)cy][(int)cx] == '0')
 			{
 				t -= 0.001;
 				cx = all.player.x + t*cos(agile);
 				cy = all.player.y + t*sin(agile);
 			}
+//			t += 0.001;
+//			cx = all.player.x + t*cos(agile);
+//			cy = all.player.y + t*sin(agile);
 			*dist = t;
 			*texture = text_distance(all, cx, cy, cord, agile);
 			return (all.win_w/(t*cos(agile-all.player.dir)));
