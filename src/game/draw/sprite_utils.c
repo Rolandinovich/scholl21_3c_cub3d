@@ -18,11 +18,11 @@ void update_sprite_distance(t_all all)
 	{
 		dist = sqrt(pow(plr.x - all.sprites[i].x, 2)
 				+ pow(plr.y - all.sprites[i].y, 2));
-		min = ((all.sprites[i].x - plr.x) / dist);
+		min = acos((all.sprites[i].x - plr.x) / dist);
 		if (min < 0)
 			min += M_PI;
 //		max = ((all.sprites[i].x - plr.x) / dist);
-		if ( min > cos(min_a) && min < cos(max_a))
+		if ( min > min_a && min < max_a)
 			all.sprites[i].dist = dist;
 		else
 			all.sprites[i].dist = -1;
