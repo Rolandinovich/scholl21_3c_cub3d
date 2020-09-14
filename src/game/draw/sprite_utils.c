@@ -19,29 +19,31 @@ void draw_sprite(t_sprites sprite, t_all all)
 void update_sprite_distance(t_all all)
 {
 	int i;
-	float min_a;
-	float max_a;
+	int k;
 	float dist;
 	t_player plr;
-	float min;
-	float max;
 
 	i = -1;
 	plr = all.player;
-	min_a = plr.dir - plr.fov/2;
-	max_a = plr.dir + plr.fov/2;
 	while (++i < all.sprite_c)
+		all.sprites[i].dist = sqrt(pow(plr.x - all.sprites[i].x, 2)
+								   + pow(plr.y - all.sprites[i].y, 2));
+	k=0;
+	while (k != -1)
 	{
-		dist = sqrt(pow(plr.x - all.sprites[i].x, 2)
-				+ pow(plr.y - all.sprites[i].y, 2));
-//		min = acos((all.sprites[i].x - plr.x) / dist);
-//		if (min < 0)
-//			min += M_PI;
-////		max = ((all.sprites[i].x - plr.x) / dist);
-//		if ( min > min_a && min < max_a)
-	all.sprites[i].dist = dist;
-	draw_sprite(all.sprites[i], all);
-//		else
-//			all.sprites[i].dist = -1;
+		i = -1;
+		k=-1;
+		dist = -1;
+		while (++i < all.sprite_c)
+			if (all.sprites[i].dist > dist)
+			{
+				k=i;
+				dist = all.sprites[i].dist;
+			}
+		if (k !=-1)
+		{
+			draw_sprite(all.sprites[k], all);
+			all.sprites[k].dist=-1;
+		}
 	}
 }
