@@ -1,4 +1,4 @@
-R 700 512
+R 700 700
 
 NO ./src/textures/north.xpm
 SO ./src/textures/south.xpm

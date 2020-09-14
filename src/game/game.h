@@ -161,7 +161,9 @@ int			event_destroy_window(void *param);
 int			loop_manager(void *param);
 int			init_data_2(t_data *data, t_all *all);
 void 		update_sprite_distance(t_all all);
-void	sprite_column(t_all all, t_img img, int column_height, const size_t texcoord, size_t win_x);
+void		sprite_column(t_all all, t_img img, int column_height, const size_t texcoord, size_t win_x);
+int			create_bitmap(t_all *all,	char *name);
+int				shot_screen(t_all *all);
 
 
 
