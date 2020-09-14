@@ -45,21 +45,23 @@ void	sprite_column(t_all all, t_img img, int column_height, const size_t texcoor
 	}
 }
 
-void	draw_textures(t_all all)
+void	draw_textures(t_all *all)
 {
 	float agile;
 	size_t i;
 	t_player plr;
 	char texture;
 	float textcord;
+	float dist;
 
 	i = 0;
-	plr = all.player;
-	while (i < all.win_w)
+	plr = all->player;
+	while (i < all->win_w)
 	{
-		agile = plr.dir - plr.fov/2 + plr.fov * i / (float)all.win_w;
-		all.col_h[i] = calc_text_distance(all, agile, &texture, &textcord);
-		texture_column(all, all.textures[texture], all.col_h[i], textcord, i);
+		agile = plr.dir - plr.fov/2 + plr.fov * i / (float)all->win_w;
+		all->col_h[i] = calc_text_distance(*all, agile, &texture, &textcord, &dist);
+		texture_column(*all, all->textures[texture], all->col_h[i], textcord, i);
+		all->col_h[i] = dist;
 		i++;
 	}
 }
@@ -90,8 +92,8 @@ void	draw_circle(t_all all)
 //		mlx_clear_window(all.win->mlx, all.win->win);
 //		draw_f_c(all);
 //		mlx_put_image_to_window(all.win->mlx, all.win->win, all.win->img, 0, 0);
-		draw_textures(all);
+		draw_textures(&all);
 		update_sprite_distance(all);
-		draw_sprites(all);
+//		draw_sprites(all);
 		mlx_put_image_to_window(all.win->mlx, all.win->win, all.win->img, 0, 0);
 }

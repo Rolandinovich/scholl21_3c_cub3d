@@ -21,7 +21,7 @@ char 	text_distance(t_all all, float cx, float cy,  float *cord, float agile)
 	return (texture);
 }
 
-float	calc_text_distance(t_all all, float agile, char *texture, float *cord)
+float	calc_text_distance(t_all all, float agile, char *texture, float *cord, float *dist)
 {
 	float		t;
 	float cx;
@@ -41,6 +41,7 @@ float	calc_text_distance(t_all all, float agile, char *texture, float *cord)
 				cx = all.player.x + t*cos(agile);
 				cy = all.player.y + t*sin(agile);
 			}
+			*dist = t;
 			*texture = text_distance(all, cx, cy, cord, agile);
 			return (all.win_w/(t*cos(agile-all.player.dir)));
 		}

@@ -145,7 +145,7 @@ void        verify_map(t_data *data);
 int			init_data_1(t_data *data, t_all *all);
 void		pixel_put(t_all *data, int x, int y, int color);
 void		draw_circle(t_all all);
-float		calc_text_distance(t_all all, float agile, char *texture, float *textcord);
+float		calc_text_distance(t_all all, float agile, char *texture, float *textcord, float *dist );
 float		calc_sprite_distance(t_all all, float agile, float *textcord);
 void 		draw_f_c(t_all all,int column_height, size_t win_x);
 void		move_forward(t_all *all);
@@ -161,6 +161,7 @@ int			event_destroy_window(void *param);
 int			loop_manager(void *param);
 int			init_data_2(t_data *data, t_all *all);
 void 		update_sprite_distance(t_all all);
+void	sprite_column(t_all all, t_img img, int column_height, const size_t texcoord, size_t win_x);
 
 
 
