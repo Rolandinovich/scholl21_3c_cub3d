@@ -6,7 +6,7 @@
 /*   By: charmon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 22:16:40 by charmon           #+#    #+#             */
-/*   Updated: 2020/09/03 09:31:39 by charmon          ###   ########.fr       */
+/*   Updated: 2020/09/19 21:51:59 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	check_and_counting_lines(int idx, t_data *data, size_t *max)
 			len = ft_strlen(lines[idx]);
 			*max = (len > *max) ? len : *max;
 		}
-		else if (!symbols_in_str(lines[idx], " 2") || *(lines[idx]) == '\0')
+		else if (*(lines[idx]) == '\0' && data->map_finish == 0)
 			data->map_finish = 1;
 		else
 			data->error = 3;
