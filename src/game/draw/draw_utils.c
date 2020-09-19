@@ -6,30 +6,34 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 22:17:10 by charmon           #+#    #+#             */
-/*   Updated: 2020/09/14 22:59:59 by charmon          ###   ########.fr       */
+/*   Updated: 2020/09/19 20:23:41 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../game.h"
 
-char 	text_distance(t_all all, float cx, float cy,  float *cord, float agile)
+char 	text_distance(t_all *all, float cx, float cy,  float *cord, float agile)
 {
 	char texture;
 
+	while (agile >  2* M_PI) agile -= 2*M_PI;
+	while (agile < 0) agile += 2*M_PI;
 	cx = cx - floor(cx+.5);
 	cy = cy - floor(cy+.5);
 	if (fabs(cx) > fabs(cy))
 	{
-		texture = (agile > M_PI) ? 'N' : 'S';
-		*cord = cx*all.textures[texture].width;
+		texture = (agile >= M_PI) ? 'N' : 'S';
+		*cord = cx*all->textures[texture].width;
 	}
 	else
 	{
-		texture = (agile > 3 * M_PI/2 || agile < M_PI/2) ? 'W' : 'E';
-		*cord = cy*all.textures[texture].width;
+		texture = (agile >= 3 * M_PI/2 || agile <= M_PI/2) ? 'W' : 'E';
+		*cord = cy*all->textures[texture].width;
 	}
 	if (*cord < 0)
-		*cord += all.textures[texture].width;
+		*cord += all->textures[texture].width;
+	if (fabs(fabs(cx) - fabs(cy))< 0.01 && fabs(cx)< 0.01)
+		texture = all->last_t ;
 	return (texture);
 }
 
@@ -38,8 +42,6 @@ float	calc_text_distance(t_all all, float agile, char *texture, float *cord, flo
 	float		t;
 	float cx;
 	float cy;
-	int x;
-	int y;
 
 	t = 0;
 	while (t < 20)
@@ -50,17 +52,20 @@ float	calc_text_distance(t_all all, float agile, char *texture, float *cord, flo
 		t += 0.01;
 		if (all.map[(int)cy][(int)cx] == '1')
 		{
+			if (fabs(floor(cy+1)-cy) <0.01 || (fabs(floor(cx+1)-cx) <0.01))
+			{
+			t -= 0.02;
+			cx = all.player.x + t*cos(agile);
+			cy = all.player.y + t*sin(agile);
 			while (all.map[(int)cy][(int)cx] == '0')
 			{
-				t -= 0.001;
+				t += 0.001;
 				cx = all.player.x + t*cos(agile);
 				cy = all.player.y + t*sin(agile);
 			}
-//			t += 0.001;
-//			cx = all.player.x + t*cos(agile);
-//			cy = all.player.y + t*sin(agile);
+			}
 			*dist = t;
-			*texture = text_distance(all, cx, cy, cord, agile);
+			*texture = text_distance(&all, cx, cy, cord, agile);
 			return (all.win_w/(t*cos(agile-all.player.dir)));
 		}
 	}
@@ -109,7 +114,6 @@ void            pixel_put(t_all *data, int x, int y, int color)
 
 void draw_f_c(t_all all, int column_height, size_t win_x)
 {
-	int x;
 	int y;
 	int min;
 	int max;

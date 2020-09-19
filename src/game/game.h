@@ -120,6 +120,7 @@ typedef struct		s_all
 	int 	error;
 	int		color_f;
 	int		color_c;
+	char last_t;
 }					t_all;
 
 
