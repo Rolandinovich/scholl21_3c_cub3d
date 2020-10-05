@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 21:40:59 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/05 23:12:00 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/05 23:28:32 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int			init_mlx(t_data *data, t_all *all)
 	&(win->bits_per_pixel),
 	&(win->line_length), &(win->endian));
 	all->win = win;
+	return (0);
 }
 
 int			init_texture_1(t_data *data, t_all *all)
