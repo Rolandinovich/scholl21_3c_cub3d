@@ -12,6 +12,15 @@
 
 #include "../../game.h"
 
+void		check_f(t_data *data)
+{
+	if (data->f[0] >= 0 && data->f[1] >= 0 && data->f[2] >= 0 &&
+		data->f[0] <= 255 && data->f[1] <= 255 && data->f[2] <= 255)
+		data->error = 0;
+	else
+		data->error = 3;
+}
+
 void		parsing_f(char *str, t_data *data)
 {
 	char	**list;
@@ -35,11 +44,7 @@ void		parsing_f(char *str, t_data *data)
 	data->f[0] = ft_atoi(list[1]);
 	data->f[1] = ft_atoi(list[2]);
 	data->f[2] = ft_atoi(list[3]);
-	if (data->f[0] >= 0 && data->f[1] >= 0 && data->f[2] >= 0 &&
-		data->f[0] <= 255 && data->f[1] <= 255 && data->f[2] <= 255)
-		data->error = 0;
-	else
-		data->error = 3;
+	check_f(data);
 	clear_2x_list(list);
 	data->f_fill = 1;
 }
