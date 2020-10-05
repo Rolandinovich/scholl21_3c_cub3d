@@ -29,7 +29,7 @@
 # define CAM_RIGHT 65363
 # include "../gnl/get_next_line.h"
 # include "../libft/libft.h"
-# include "../minilibx_ubuntu/mlx.h"
+# include "../../minilibx_ubuntu/mlx.h"
 # include <math.h>
 
 typedef struct	s_data

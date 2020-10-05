@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 21:40:59 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/05 21:08:18 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/05 23:12:00 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int			init_mlx(t_data *data, t_all *all)
 {
 	t_win	*win;
-	int 	r0;
-	int 	r1;
+	int		r0;
+	int		r1;
 
 	if (!(win = (t_win*)malloc(sizeof(t_win))))
 	{
@@ -26,8 +26,8 @@ int			init_mlx(t_data *data, t_all *all)
 	win->mlx = mlx_init();
 	r0 = (data->r[0] <= 1920) ? data->r[0] : 1910;
 	r1 = (data->r[1] <= 1080) ? data->r[1] : 1070;
-	all->win_w= r0;
-	all->win_h= r1;
+	all->win_w = r0;
+	all->win_h = r1;
 	if (!all->save)
 		win->win = mlx_new_window(win->mlx, r0, r1, "CUB-IK");
 	win->img = mlx_new_image(win->mlx, r0, r1);
@@ -37,7 +37,7 @@ int			init_mlx(t_data *data, t_all *all)
 	all->win = win;
 }
 
-int	init_texture_1(t_data *data, t_all *all)
+int			init_texture_1(t_data *data, t_all *all)
 {
 	all->textures['N'].ptr = mlx_xpm_file_to_image(all->win->mlx, data->no,
 	&(all->textures['N'].width), &(all->textures['N'].height));
@@ -60,7 +60,7 @@ int	init_texture_1(t_data *data, t_all *all)
 	}
 }
 
-int	init_texture_2(t_data *data, t_all *all)
+int			init_texture_2(t_data *data, t_all *all)
 {
 	all->textures['W'].ptr = mlx_xpm_file_to_image(all->win->mlx, data->we,
 		&(all->textures['W'].width), &(all->textures['W'].height));
@@ -83,7 +83,7 @@ int	init_texture_2(t_data *data, t_all *all)
 	}
 }
 
-int	init_sprite(t_data *data, t_all *all)
+int			init_sprite(t_data *data, t_all *all)
 {
 	all->sprite.ptr = mlx_xpm_file_to_image(all->win->mlx, data->s,
 	&(all->sprite.width), &(all->sprite.height));
@@ -105,7 +105,7 @@ int	init_sprite(t_data *data, t_all *all)
 	return (0);
 }
 
-int	init_data_1(t_data *data, t_all *all)
+int			init_data_1(t_data *data, t_all *all)
 {
 	all->key.left = 0;
 	all->key.right = 0;

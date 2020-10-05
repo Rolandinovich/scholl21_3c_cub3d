@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: charmon <charmon@42.fr>                     +#+  +:+       +#+        */
+/*   By: charmon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 22:19:36 by charmon           #+#    #+#             *//*   Updated: 2020/10/05 20:55:31 by charmon          ###   ########.fr       */
-
+/*   Created: 2020/10/05 23:10:16 by charmon           #+#    #+#             */
+/*   Updated: 2020/10/05 23:10:18 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "game/game.h"
 
-int	init_data_2(t_data *data, t_all *all)
+int			init_data_2(t_data *data, t_all *all)
 {
 	int		idx_x;
 	int		idx_y;
@@ -36,7 +37,7 @@ int	init_data_2(t_data *data, t_all *all)
 	return (0);
 }
 
-int		check_save(int argc, char **argv, t_all *all)
+int			check_save(int argc, char **argv, t_all *all)
 {
 	all->save = 0;
 	if (argc == 3 && !(ft_strncmp(argv[2], "--save", 8)))

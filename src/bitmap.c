@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   bitmap.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: charmon <charmon@42.fr>                     +#+  +:+       +#+        */
+/*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 22:19:10 by charmon           #+#    #+#             *//*   Updated: 2020/09/14 22:24:58 by charmon          ###   ########.fr       */
-
+/*   Created: 2020/10/05 23:09:52 by charmon           #+#    #+#             */
+/*   Updated: 2020/10/05 23:09:52 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game/game.h"
 
 static int		make_header(unsigned char *bmp_fheader, unsigned char
-*bmpinfheader, t_all *all)
+				*bmpinfheader, t_all *all)
 {
 	int file_size;
 
@@ -41,7 +41,7 @@ static int		make_header(unsigned char *bmp_fheader, unsigned char
 }
 
 static int		write_in_header(unsigned char *bmp_fheader,
-								  unsigned char *bmpinfheader, t_all *all)
+				unsigned char *bmpinfheader, t_all *all)
 {
 	int		fd;
 	char	*filename;
@@ -79,6 +79,6 @@ int				shot_screen(t_all *all)
 	make_header(bmp_fheader, bmpinfheader, all);
 	if (!write_in_header(bmp_fheader, bmpinfheader, all))
 		ft_putstr_fd("Saving screenshot failed!\n", 0);
-//	close_win(0, all, " ");
+	close_win(0, all, " ");
 	return (0);
 }
