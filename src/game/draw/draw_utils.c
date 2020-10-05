@@ -6,125 +6,99 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 22:17:10 by charmon           #+#    #+#             */
-/*   Updated: 2020/09/19 20:23:41 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/05 22:22:43 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../game.h"
 
-char 	text_distance(t_all *all, float cx, float cy,  float *cord, float agile)
+char		text_distance(t_all *all, float cxy[2],
+					float *cord, float agile)
 {
-	char texture;
+	char	texture;
 
-	while (agile >  2* M_PI) agile -= 2*M_PI;
-	while (agile < 0) agile += 2*M_PI;
-	cx = cx - floor(cx+.5);
-	cy = cy - floor(cy+.5);
-	if (fabs(cx) > fabs(cy))
+	while (agile > 2 * M_PI)
+		agile -= 2 * M_PI;
+	while (agile < 0)
+		agile += 2 * M_PI;
+	cxy[0] = cxy[0] - floor(cxy[0] + .5);
+	cxy[1] = cxy[1] - floor(cxy[1] + .5);
+	if (fabs(cxy[0]) > fabs(cxy[1]))
 	{
 		texture = (agile >= M_PI) ? 'N' : 'S';
-		*cord = cx*all->textures[texture].width;
+		*cord = cxy[0] * all->textures[texture].width;
 	}
 	else
 	{
-		texture = (agile >= 3 * M_PI/2 || agile <= M_PI/2) ? 'W' : 'E';
-		*cord = cy*all->textures[texture].width;
+		texture = (agile >= 3 * M_PI / 2 || agile <= M_PI / 2) ? 'W' : 'E';
+		*cord = cxy[1] * all->textures[texture].width;
 	}
 	if (*cord < 0)
 		*cord += all->textures[texture].width;
-	if (fabs(fabs(cx) - fabs(cy))< 0.01 && fabs(cx)< 0.01)
-		texture = all->last_t ;
+	if (fabs(fabs(cxy[0]) - fabs(cxy[1])) < 0.01 && fabs(cxy[0]) < 0.01)
+		texture = all->last_t;
 	return (texture);
 }
 
-float	calc_text_distance(t_all all, float agile, char *texture, float *cord, float *dist)
+float		calc_text_distance(t_all all, float agile,
+			char *texture, float *cord, float *dist)
 {
-	float		t;
-	float cx;
-	float cy;
+	float	t;
+	float	cxy[2];
 
 	t = 0;
 	while (t < 20)
 	{
-
-		cx = all.player.x + t*cos(agile);
-		cy = all.player.y + t*sin(agile);
+		cxy[0] = all.player.x + t * cos(agile);
+		cxy[1] = all.player.y + t * sin(agile);
 		t += 0.01;
-		if (all.map[(int)cy][(int)cx] == '1')
+		if (all.map[(int)cxy[1]][(int)cxy[0]] == '1')
 		{
-			if (fabs(floor(cy+1)-cy) <0.01 || (fabs(floor(cx+1)-cx) <0.01))
-			{
-			t -= 0.02;
-			cx = all.player.x + t*cos(agile);
-			cy = all.player.y + t*sin(agile);
-			while (all.map[(int)cy][(int)cx] == '0')
-			{
-				t += 0.001;
-				cx = all.player.x + t*cos(agile);
-				cy = all.player.y + t*sin(agile);
-			}
-			}
+//			if (fabs(floor(cxy[1] + 1) - cxy[1]) < 0.01 ||
+//				(fabs(floor(cxy[0] + 1) - cxy[0]) < 0.01))
+//			{
+//				t -= 0.02;
+//				cxy[0] = all.player.x + t * cos(agile);
+//				cxy[1] = all.player.y + t * sin(agile);
+//				while (all.map[(int)cxy[1]][(int)cxy[0]] == '0')
+//				{
+//					t += 0.001;
+//					cxy[0] = all.player.x + t * cos(agile);
+//					cxy[1] = all.player.y + t * sin(agile);
+//				}
+//			}
 			*dist = t;
-			*texture = text_distance(&all, cx, cy, cord, agile);
-			return (all.win_w/(t*cos(agile-all.player.dir)));
+			*texture = text_distance(&all, cxy, cord, agile);
+			return (all.win_w / (t * cos(agile - all.player.dir)));
 		}
 	}
 	return (-1);
 }
 
-float	calc_sprite_distance(t_all all, float agile, float *cord)
+void		pixel_put(t_all *data, int x, int y, int color)
 {
-	float		t;
-	float		cx;
-	float		cy;
-
-	t = 0;
-	while (t < 20)
-	{
-		cx = all.player.x + t*cos(agile);
-		cy = all.player.y + t*sin(agile);
-		t += 0.01;
-		if (all.map[(int)cy][(int)cx] == '1')
-			break;
-		if (all.map[(int)cy][(int)cx] == '2')
-		{
-			cx = cx - floor(cx+.5);
-			cy = cy - floor(cy+.5);
-			if (fabs(cx) > fabs(cy))
-				*cord = cx*all.sprite.width;
-			else
-				*cord = cy*all.sprite.width;
-			*cord = (*cord < 0) ? *cord + all.sprite.width : *cord;
-			return (all.win_h/(t*cos(agile - all.player.dir)));
-		}
-	}
-	return (-1);
-}
-
-void            pixel_put(t_all *data, int x, int y, int color)
-{
-	char    *dst;
+	char	*dst;
 
 	if (x > data->win_w || x < 0 || y > data->win_h || y < 0)
-		return;
+		return ;
 	dst = data->win->addr + (y * data->win->line_length + \
 	x * (data->win->bits_per_pixel / 8));
 	*(int*)dst = color;
 }
 
-void draw_f_c(t_all all, int column_height, size_t win_x)
+void		draw_f_c(t_all all, int column_height, size_t win_x)
 {
-	int y;
-	int min;
-	int max;
+	int		y;
+	int		min;
+	int		max;
 
-	min = all.win_h/2 - column_height/2;
-	max = all.win_h/2 + column_height/2;
+	min = all.win_h / 2 - column_height / 2;
+	max = all.win_h / 2 + column_height / 2;
 	y = all.win_h;
 	while (y >= 0)
 		if (y > max || y < min)
 		{
-			if (y < all.win_h/2)
+			if (y < all.win_h / 2)
 				pixel_put(&all, win_x, y--, all.color_c);
 			else
 				pixel_put(&all, win_x, y--, all.color_f);
