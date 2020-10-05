@@ -121,6 +121,7 @@ typedef struct		s_all
 	int		color_f;
 	int		color_c;
 	char last_t;
+	int 	save;
 }					t_all;
 
 
@@ -164,7 +165,8 @@ int			init_data_2(t_data *data, t_all *all);
 void 		update_sprite_distance(t_all all);
 void		sprite_column(t_all all, t_img img, int column_height, const size_t texcoord, size_t win_x);
 int			create_bitmap(t_all *all,	char *name);
-int				shot_screen(t_all *all);
+int			shot_screen(t_all *all);
+int			check_save(int argc, char **argv, t_all *all);
 
 
 

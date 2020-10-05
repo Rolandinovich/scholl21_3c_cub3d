@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 22:17:28 by charmon           #+#    #+#             */
-/*   Updated: 2020/09/19 20:18:11 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/05 21:08:18 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	sprite_column(t_all all, t_img img, int column_height, const size_t texcoor
 	int		color;
 
 	y = 0;
-	while(y<column_height)
+	while(y<column_height && column_height > 0)
 	{
 		pix_x = texcoord;
 		pix_y = (y*img.height)/column_height;
@@ -105,5 +105,6 @@ void	draw_circle(t_all all)
 {
 		draw_textures(&all);
 		update_sprite_distance(all);
-		mlx_put_image_to_window(all.win->mlx, all.win->win, all.win->img, 0, 0);
+		if (!all.save)
+			mlx_put_image_to_window(all.win->mlx, all.win->win, all.win->img, 0, 0);
 }

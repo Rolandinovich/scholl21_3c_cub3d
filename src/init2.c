@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: charmon <charmon@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 22:19:36 by charmon           #+#    #+#             *//*   Updated: 2020/09/19 20:47:30 by charmon          ###   ########.fr       */
+/*   Created: 2020/09/14 22:19:36 by charmon           #+#    #+#             *//*   Updated: 2020/10/05 20:55:31 by charmon          ###   ########.fr       */
 
 /*                                                                            */
 /* ************************************************************************** */
@@ -34,4 +34,12 @@ int	init_data_2(t_data *data, t_all *all)
 		}
 	}
 	return (0);
+}
+
+int		check_save(int argc, char **argv, t_all *all)
+{
+	all->save = 0;
+	if (argc == 3 && !(ft_strncmp(argv[2], "--save", 8)))
+		all->save = 1;
+	return (all->save);
 }

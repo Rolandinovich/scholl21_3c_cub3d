@@ -6,15 +6,17 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 21:40:59 by charmon           #+#    #+#             */
-/*   Updated: 2020/09/02 21:31:34 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/05 21:08:18 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game/game.h"
 
-int	init_mlx(t_data *data, t_all *all)
+int			init_mlx(t_data *data, t_all *all)
 {
-	t_win *win;
+	t_win	*win;
+	int 	r0;
+	int 	r1;
 
 	if (!(win = (t_win*)malloc(sizeof(t_win))))
 	{
@@ -22,8 +24,13 @@ int	init_mlx(t_data *data, t_all *all)
 		return (2);
 	}
 	win->mlx = mlx_init();
-	win->win = mlx_new_window(win->mlx, data->r[0], data->r[1], "CUB-IK");
-	win->img = mlx_new_image(win->mlx, data->r[0], data->r[1]);
+	r0 = (data->r[0] <= 1920) ? data->r[0] : 1910;
+	r1 = (data->r[1] <= 1080) ? data->r[1] : 1070;
+	all->win_w= r0;
+	all->win_h= r1;
+	if (!all->save)
+		win->win = mlx_new_window(win->mlx, r0, r1, "CUB-IK");
+	win->img = mlx_new_image(win->mlx, r0, r1);
 	win->addr = mlx_get_data_addr(win->img,
 	&(win->bits_per_pixel),
 	&(win->line_length), &(win->endian));
@@ -86,8 +93,6 @@ int	init_sprite(t_data *data, t_all *all)
 			&(all->sprite.size_l), &(all->sprite.endian));
 	else
 		return ((all->error = 1));
-	all->win_h = data->r[1];
-	all->win_w = data->r[0];
 	all->error = 0;
 	all->map = data->map;
 	all->player.x = data->position[0] + .5;

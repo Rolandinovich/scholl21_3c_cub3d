@@ -35,7 +35,7 @@ $(LIBFT):
 				@$(MAKE) -C src/libft
 				@mv src/libft/$(LIBFT) .
 
-%.o: %.c
+%.o: %.c ${HFILES}
 	@echo "####       rebuild          ####"
 	gcc $(CFLAGS) -o $@ -c $<
 

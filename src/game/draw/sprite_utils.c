@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 22:16:52 by charmon           #+#    #+#             */
-/*   Updated: 2020/09/19 21:42:25 by charmon          ###   ########.fr       */
+/*   Updated: 2020/09/20 10:43:55 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void draw_sprite(t_sprites sprite, t_all all)
 {
+	float s_dir;
 
 	float sprite_dir = atan2(sprite.y - all.player.y, sprite.x - all.player.x);
 	while (sprite_dir - all.player.dir >  M_PI) sprite_dir -= 2*M_PI;
@@ -24,6 +25,7 @@ void draw_sprite(t_sprites sprite, t_all all)
 	for (size_t i=0; i<sprite_screen_size; i++) {
 		if (h_offset+(int)i<0 || h_offset+i>=all.win_w) continue;
 		if (all.col_h[h_offset+(int)i] > sprite_dist)
+//			sprite_column(all, all.sprite,all.win_h/(sprite_dist*cos(s_dir - all.player.dir)),(i/(float)sprite_screen_size)*all.sprite.width, (size_t)h_offset+i);
 			sprite_column(all, all.sprite,sprite_screen_size,(i/(float)sprite_screen_size)*all.sprite.width, (size_t)h_offset+i);
 	}
 }
