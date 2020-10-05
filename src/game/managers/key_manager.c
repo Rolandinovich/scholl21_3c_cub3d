@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 22:17:46 by charmon           #+#    #+#             */
-/*   Updated: 2020/09/14 22:17:46 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/05 22:41:54 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ int		key_manager(t_all *all)
 		all->player.dir -= all->player.fov_step;
 	if (all->key.turn_right == 1)
 		all->player.dir += all->player.fov_step;
-	if (all->player.dir > 2* M_PI)
+	if (all->player.dir > 2 * M_PI)
 		all->player.dir -= 2 * M_PI;
 	if (all->player.dir < 0)
 		all->player.dir = 2 * M_PI;
 	return (0);
 }
 
-int		event_key_released(	int key,	void *param)
+int		event_key_released(int key, void *param)
 {
 	t_all	*all;
 
@@ -53,7 +53,7 @@ int		event_key_released(	int key,	void *param)
 	return (0);
 }
 
-int		event_key_pressed(	int key,	void *param)
+int		event_key_pressed(int key, void *param)
 {
 	t_all	*all;
 

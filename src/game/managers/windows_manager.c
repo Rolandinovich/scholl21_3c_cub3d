@@ -6,13 +6,13 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 22:18:30 by charmon           #+#    #+#             */
-/*   Updated: 2020/09/14 22:18:30 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/05 22:32:35 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../game.h"
 
-void			close_win(		int mod,		t_all	*all,		char *msg)
+void		close_win(int mod, t_all *all, char *msg)
 {
 	if (mod == 0)
 		mlx_destroy_window(all->win->mlx, all->win->win);
@@ -22,7 +22,7 @@ void			close_win(		int mod,		t_all	*all,		char *msg)
 	exit(0);
 }
 
-int		event_destroy_window(void *param)
+int			event_destroy_window(void *param)
 {
 	t_all	*all;
 
