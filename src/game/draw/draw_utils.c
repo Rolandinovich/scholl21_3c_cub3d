@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 22:17:10 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/05 22:22:43 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/05 22:26:17 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char		text_distance(t_all *all, float cxy[2],
 	return (texture);
 }
 
-float		calc_text_distance(t_all all, float agile,
+float		calc_text_distance(t_all all,
 			char *texture, float *cord, float *dist)
 {
 	float	t;
@@ -49,27 +49,14 @@ float		calc_text_distance(t_all all, float agile,
 	t = 0;
 	while (t < 20)
 	{
-		cxy[0] = all.player.x + t * cos(agile);
-		cxy[1] = all.player.y + t * sin(agile);
+		cxy[0] = all.player.x + t * cos(all.current_agile);
+		cxy[1] = all.player.y + t * sin(all.current_agile);
 		t += 0.01;
 		if (all.map[(int)cxy[1]][(int)cxy[0]] == '1')
 		{
-//			if (fabs(floor(cxy[1] + 1) - cxy[1]) < 0.01 ||
-//				(fabs(floor(cxy[0] + 1) - cxy[0]) < 0.01))
-//			{
-//				t -= 0.02;
-//				cxy[0] = all.player.x + t * cos(agile);
-//				cxy[1] = all.player.y + t * sin(agile);
-//				while (all.map[(int)cxy[1]][(int)cxy[0]] == '0')
-//				{
-//					t += 0.001;
-//					cxy[0] = all.player.x + t * cos(agile);
-//					cxy[1] = all.player.y + t * sin(agile);
-//				}
-//			}
 			*dist = t;
-			*texture = text_distance(&all, cxy, cord, agile);
-			return (all.win_w / (t * cos(agile - all.player.dir)));
+			*texture = text_distance(&all, cxy, cord, all.current_agile);
+			return (all.win_w / (t * cos(all.current_agile - all.player.dir)));
 		}
 	}
 	return (-1);

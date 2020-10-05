@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 22:17:28 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/05 21:35:46 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/05 21:36:04 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ void		draw_textures(t_all *all)
 	{
 		agile = all->player.dir - all->player.fov / 2 +
 			all->player.fov * i / (float)all->win_w;
-		all->col_h[i] = calc_text_distance(*all, agile,
+		all->current_agile = agile;
+		all->col_h[i] = calc_text_distance(*all,
 						&texture, &textcord, &dist);
 		all->last_t = texture;
 		texture_column(*all, all->textures[texture],

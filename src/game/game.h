@@ -122,6 +122,7 @@ typedef struct		s_all
 	int		color_c;
 	char last_t;
 	int 	save;
+	float 	current_agile;
 }					t_all;
 
 
@@ -147,7 +148,7 @@ void        verify_map(t_data *data);
 int			init_data_1(t_data *data, t_all *all);
 void		pixel_put(t_all *data, int x, int y, int color);
 void		draw_circle(t_all all);
-float		calc_text_distance(t_all all, float agile, char *texture, float *textcord, float *dist );
+float		calc_text_distance(t_all all, char *texture, float *textcord, float *dist );
 float		calc_sprite_distance(t_all all, float agile, float *textcord);
 void 		draw_f_c(t_all all,int column_height, size_t win_x);
 void		move_forward(t_all *all);
