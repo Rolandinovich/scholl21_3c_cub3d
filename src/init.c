@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 21:40:59 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/05 23:28:32 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/05 23:40:57 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int			init_mlx(t_data *data, t_all *all)
 	&(win->bits_per_pixel),
 	&(win->line_length), &(win->endian));
 	all->win = win;
-	return (0);
+	return ((all->error = 0));
 }
 
 int			init_texture_1(t_data *data, t_all *all)
@@ -59,6 +59,7 @@ int			init_texture_1(t_data *data, t_all *all)
 		free(all->textures['N'].ptr);
 		return ((all->error = 1));
 	}
+	return ((all->error = 0));
 }
 
 int			init_texture_2(t_data *data, t_all *all)
@@ -82,6 +83,7 @@ int			init_texture_2(t_data *data, t_all *all)
 		free(all->textures['W'].ptr);
 		return ((all->error = 1));
 	}
+	return ((all->error = 0));
 }
 
 int			init_sprite(t_data *data, t_all *all)
@@ -103,7 +105,7 @@ int			init_sprite(t_data *data, t_all *all)
 	all->player.fov_step = 0.1;
 	all->key.toward = 0;
 	all->key.backward = 0;
-	return (0);
+	return ((all->error = 0));
 }
 
 int			init_data_1(t_data *data, t_all *all)
@@ -122,9 +124,11 @@ int			init_data_1(t_data *data, t_all *all)
 		all->player.dir = M_PI;
 	all->color_f = (data->f[0] << 16) + (data->f[1] << 8) + (data->f[2]);
 	all->color_c = (data->c[0] << 16) + (data->c[1] << 8) + (data->c[2]);
-	init_mlx(data, all);
-	init_texture_1(data, all);
-	init_texture_2(data, all);
-	init_sprite(data, all);
+	all->error = ((init_mlx(data, all) ||
+		init_texture_1(data, all) ||
+		init_texture_2(data, all) ||
+		init_sprite(data, all)));
+	if (all->error)
+		ft_putstr_fd("Error\nCan't load textures", 1);
 	return (all->error);
 }

@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 22:07:52 by charmon           #+#    #+#             */
-/*   Updated: 2020/09/03 09:31:39 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/05 23:46:47 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		parsing_s(char *str, t_data *data)
 	int		count;
 
 	data->error = 3;
-	if (data->s_fill)
+	if (data->s_fill || str[ft_strlen(str) - 1] == ' ')
 		return ;
 	list = ft_split(str, ' ');
 	count = 0;

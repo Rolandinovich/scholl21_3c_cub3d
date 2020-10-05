@@ -18,7 +18,7 @@ void		parsing_ea(char *str, t_data *data)
 	int		count;
 
 	data->error = 3;
-	if (data->ea_fill)
+	if (data->ea_fill || str[ft_strlen(str) - 1] == ' ')
 		return ;
 	list = ft_split(str, ' ');
 	count = 0;
