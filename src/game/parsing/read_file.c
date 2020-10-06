@@ -20,7 +20,7 @@ int			count_lines(char *file, t_data *data)
 	int		count;
 
 	data->error = 1;
-	if (!(fd = open(file, O_RDONLY)))
+	if ((fd = open(file, O_RDONLY)) == -1)
 		return (-1);
 	count = 0;
 	while ((res = get_next_line(fd, &line)) >= 0)
@@ -42,10 +42,12 @@ void		load_data(char *file, t_data *data)
 
 	(*data).error = 1;
 	count = count_lines(file, data);
+	if (count == -1 || (*data).error)
+		return;
 	if (!(data->data_lines = (char**)malloc(sizeof(char*) * (count + 1))))
 		return ;
 	idx = -1;
-	if (!(fd = open(file, O_RDONLY)))
+	if ((fd = open(file, O_RDONLY)) == -1)
 		return ;
 	while (++idx < count)
 		get_next_line(fd, &((*data).data_lines[idx]));

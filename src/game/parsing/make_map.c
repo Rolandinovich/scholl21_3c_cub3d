@@ -17,7 +17,7 @@ int		make_map(char *file, t_data *data)
 	data_init(data);
 	load_data(file, data);
 	if (data->error)
-		ft_putstr_fd("Error\n read file\n", 1);
+		ft_putstr_fd("Error\nRead file\n", 1);
 	else
 	{
 		ft_putstr_fd("Read file completed\n", 1);

@@ -34,6 +34,8 @@ int			init_mlx(t_data *data, t_all *all)
 	win->addr = mlx_get_data_addr(win->img,
 	&(win->bits_per_pixel),
 	&(win->line_length), &(win->endian));
+	if (!win->addr)
+		return ((data->error = 2));
 	all->win = win;
 	return ((all->error = 0));
 }

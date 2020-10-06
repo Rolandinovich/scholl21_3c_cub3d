@@ -17,8 +17,7 @@ int			main(int argc, char **argv)
 	t_data	data;
 	t_all	all;
 
-	check_save(argc, argv, &all);
-	if (!((argc > 1) &&
+	if (!((!check_save(argc, argv, &all)) &&
 	!(make_map(argv[1], &data)) &&
 	!(init_data_1(&data, &all)) &&
 	!(init_data_2(&data, &all))))
