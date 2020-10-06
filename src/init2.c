@@ -6,7 +6,7 @@
 /*   By: charmon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 23:10:16 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/05 23:10:18 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/06 20:34:06 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ int			check_save(int argc, char **argv, t_all *all)
 	if (argc > 3 || argc == 1 ||
 		(argc == 3 && ft_strncmp(argv[2], "--save", 8)))
 	{
-		ft_putstr_fd("Error\nWrongArguments", 1);
+		ft_putstr_fd("Error\nWrongArguments\n", 1);
 		return ((all->error = 1));
 	}
 	l = ft_strlen(argv[1]);
 	if (l < 4 || argv[1][l - 1] != 'b' || argv[1][l - 2] != 'u'
 		|| argv[1][l - 3] != 'c' || argv[1][l - 4] != '.')
 	{
-		ft_putstr_fd("Error\nWrongArguments", 1);
+		ft_putstr_fd("Error\nWrongArguments\n", 1);
 		return ((all->error = 1));
 	}
 	return (all->error);
