@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 23:10:32 by charmon           #+#    #+#             */
-/*   Updated: 2020/09/03 09:31:39 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/06 19:21:05 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		load_data(char *file, t_data *data)
 	(*data).error = 1;
 	count = count_lines(file, data);
 	if (count == -1 || (*data).error)
-		return;
+		return ;
 	if (!(data->data_lines = (char**)malloc(sizeof(char*) * (count + 1))))
 		return ;
 	idx = -1;

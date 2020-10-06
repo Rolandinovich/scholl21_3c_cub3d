@@ -39,13 +39,14 @@ int			init_data_2(t_data *data, t_all *all)
 
 int			check_save(int argc, char **argv, t_all *all)
 {
-	int 	l;
+	int		l;
 
 	all->save = 0;
 	all->error = 0;
 	if (argc == 3 && !(ft_strncmp(argv[2], "--save", 8)))
 		all->save = 1;
-	if (argc > 3 || argc == 1 || (argc == 3 && ft_strncmp(argv[2], "--save", 8)))
+	if (argc > 3 || argc == 1 ||
+		(argc == 3 && ft_strncmp(argv[2], "--save", 8)))
 	{
 		ft_putstr_fd("Error\nWrongArguments", 1);
 		return ((all->error = 1));
