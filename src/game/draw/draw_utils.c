@@ -26,15 +26,15 @@ char		text_distance(t_all *all, float cxy[2],
 	if (fabs(cxy[0]) > fabs(cxy[1]))
 	{
 		texture = (agile >= M_PI) ? 'N' : 'S';
-		*cord = cxy[0] * all->textures[texture].width;
+		*cord = cxy[0] * all->textures[(int)texture].width;
 	}
 	else
 	{
 		texture = (agile >= 3 * M_PI / 2 || agile <= M_PI / 2) ? 'W' : 'E';
-		*cord = cxy[1] * all->textures[texture].width;
+		*cord = cxy[1] * all->textures[(int)texture].width;
 	}
 	if (*cord < 0)
-		*cord += all->textures[texture].width;
+		*cord += all->textures[(int)texture].width;
 	if (fabs(fabs(cxy[0]) - fabs(cxy[1])) < 0.01 && fabs(cxy[0]) < 0.01)
 		texture = all->last_t;
 	return (texture);

@@ -27,7 +27,7 @@ void		texture_column(t_all all, t_img img,
 		pix_x = texcoord;
 		pix_y = (y * img.height) / all.col_h[win_x];
 		win_y = y + all.win_h / 2 - all.col_h[win_x] / 2;
-		if ((win_y < 0 || win_y >= all.win_h) && (y += 1))
+		if ((win_y >= (size_t)all.win_h) && (y += 1))
 			continue;
 		pixel_put(&all, win_x, win_y, img.data[(int)((int)pix_x + (int)pix_y *
 			(img.width))]);
@@ -45,12 +45,12 @@ void		sprite_column(t_all all, int column_height,
 	int		color;
 
 	y = 0;
-	while (y < column_height && column_height > 0)
+	while (y < (size_t)column_height && column_height > 0)
 	{
 		pix_x = texcoord;
 		pix_y = (y * all.sprite.height) / column_height;
 		win_y = y + all.win_h / 2 - column_height / 2;
-		if ((win_y < 0 || win_y >= all.win_h) && (y += 1))
+		if ((win_y >= (size_t)all.win_h) && (y += 1))
 			continue;
 		color = all.sprite.data[(int)((int)pix_x +
 					(int)pix_y * (all.sprite.width))];
@@ -70,7 +70,7 @@ void		draw_textures(t_all *all)
 
 	i = 0;
 	all->last_t = 'W';
-	while (i < all->win_w)
+	while (i < (size_t)all->win_w)
 	{
 		agile = all->player.dir - all->player.fov / 2 +
 			all->player.fov * i / (float)all->win_w;
@@ -78,7 +78,7 @@ void		draw_textures(t_all *all)
 		all->col_h[i] = calc_text_distance(*all,
 						&texture, &textcord, &dist);
 		all->last_t = texture;
-		texture_column(*all, all->textures[texture],
+		texture_column(*all, all->textures[(int)texture],
 						textcord, i);
 		all->col_h[i] = dist;
 		i++;

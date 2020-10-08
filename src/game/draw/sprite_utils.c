@@ -31,7 +31,7 @@ void		draw_sprite(t_sprites sprite, t_all all)
 	h_offset = (sprite_dir - all.player.dir) * (all.win_w) / (all.player.fov)
 		+ (all.win_w) / 2 - sprite_screen_size / 2;
 	i = -1;
-	while (++i < sprite_screen_size)
+	while (++i < (int)sprite_screen_size)
 	{
 		if (h_offset + i < 0 || h_offset + i >= all.win_w)
 			continue;

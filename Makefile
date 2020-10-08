@@ -16,10 +16,7 @@ OBJS			= $(SRCS:.c=.o)
 
 CC				= gcc
 RM				= rm -f
-CFLAGS			=  -g -I .
-#CFLAGS			= -g -Wall -Wextra -Werror -I .
-#LIBS			= -Lmlx -lmlx -framework OpenGL -framework AppKit -lm
-#LIBS			= -L. -lft -L. -lmlx -framework OpenGL -framework AppKit -lm
+CFLAGS			= -g -Wall -Wextra -Werror -I .
 LIBS			= -L. -lft -lmlx -lXext -lX11
 LIBFT			= libft.a
 HFILES			= src/game/game.h
