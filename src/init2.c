@@ -52,7 +52,7 @@ int			check_save(int argc, char **argv, t_all *all)
 		return ((all->error = 1));
 	}
 	l = ft_strlen(argv[1]);
-	if (l < 4 || argv[1][l - 1] != 'b' || argv[1][l - 2] != 'u'
+	if (l <= 4 || argv[1][l - 1] != 'b' || argv[1][l - 2] != 'u'
 		|| argv[1][l - 3] != 'c' || argv[1][l - 4] != '.')
 	{
 		ft_putstr_fd("Error\nWrongArguments\n", 1);

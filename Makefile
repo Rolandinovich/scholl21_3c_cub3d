@@ -33,9 +33,14 @@ $(LIBFT):
 				@mv src/libft/$(LIBFT) .
 
 %.o: %.c ${HFILES}
-	@echo "####       rebuild          ####"
-	gcc $(CFLAGS) -o $@ -c $<
+				@echo "####       rebuild          ####"
+				gcc $(CFLAGS) -o $@ -c $<
 
 clean:
 				@$(MAKE) -C src/libft clean
 				$(RM) $(OBJS)
+fclean: clean
+				$(RM) $(LIBFT)
+				$(RM) $(NAME)
+
+re: fclean all
