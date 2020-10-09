@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 23:09:25 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/06 20:34:06 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/10 00:11:24 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ int			main(int argc, char **argv)
 
 	if (!((!check_save(argc, argv, &all)) &&
 	!(make_map(argv[1], &data)) &&
+	!(check_files(&data)) &&
 	!(init_data_1(&data, &all)) &&
 	!(init_data_2(&data, &all))))
-		return (0);
+		event_destroy_window(&all);
 	draw_circle(all);
 	if (all.save)
 	{

@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 23:09:33 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/06 20:34:06 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/10 00:22:43 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int			parsing(t_data *data)
 		return (data->error);
 	}
 	verify_map(data);
+	data->error = (data->orientation == '\0' || data->error == 3) ? 3 : 0;
 	if (data->error > 0)
 	{
 		ft_putstr_fd("Error verify map\n", 1);

@@ -6,7 +6,7 @@
 /*   By: charmon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 23:03:00 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/06 20:34:06 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/09 23:53:45 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ int				key_manager(t_all *all);
 int				event_key_released(int key, void *param);
 int				event_key_pressed(int key, void *param);
 int				event_destroy_window(void *param);
-void			close_win(int mod, t_all *all, char *msg);
+void			close_win(t_all *all, char *msg);
 int				event_destroy_window(void *param);
 int				loop_manager(void *param);
 int				init_data_2(t_data *data, t_all *all);
@@ -174,5 +174,6 @@ void			sprite_column(t_all all, int column_height,
 					const size_t texcoord, size_t win_x);
 int				shot_screen(t_all *all);
 int				check_save(int argc, char **argv, t_all *all);
+int				check_files(t_data *data);
 
 #endif

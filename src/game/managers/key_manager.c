@@ -59,7 +59,7 @@ int		event_key_pressed(int key, void *param)
 
 	all = (t_all *)param;
 	if (key == ESC)
-		close_win(0, all, "");
+		close_win(all, "");
 	else if (key == TOWARD && all->key.toward == 0)
 		all->key.toward = 1;
 	else if (key == BACKWARD && all->key.backward == 0)

@@ -6,7 +6,7 @@
 /*   By: charmon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 23:10:16 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/06 20:34:06 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/10 00:14:01 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,32 @@ int			check_save(int argc, char **argv, t_all *all)
 		return ((all->error = 1));
 	}
 	return (all->error);
+}
+
+int			check_files(t_data *data)
+{
+	int		fd;
+	int		res;
+
+	res = 0;
+	if ((fd = open(data->no, O_RDWR)) == -1)
+		res = 1;
+	close(fd);
+	if ((fd = open(data->ea, O_RDWR)) == -1)
+		res = 1;
+	close(fd);
+	if ((fd = open(data->so, O_RDWR)) == -1)
+		res = 1;
+	close(fd);
+	if ((fd = open(data->we, O_RDWR)) == -1)
+		res = 1;
+	close(fd);
+	if ((fd = open(data->s, O_RDWR)) == -1)
+		res = 1;
+	close(fd);
+	if (res)
+	{
+		clear_2x_list(data->map);
+	}
+	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 22:17:10 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/05 22:26:17 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/09 22:42:13 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char		text_distance(t_all *all, float cxy[2],
 	}
 	else
 	{
-		texture = (agile >= 3 * M_PI / 2 || agile <= M_PI / 2) ? 'W' : 'E';
+		texture = (agile >= 3 * M_PI / 2 || agile <= M_PI / 2) ? 'E' : 'W';
 		*cord = cxy[1] * all->textures[(int)texture].width;
 	}
 	if (*cord < 0)
@@ -47,7 +47,7 @@ float		calc_text_distance(t_all all,
 	float	cxy[2];
 
 	t = 0;
-	while (t < 20)
+	while (t < 200)
 	{
 		cxy[0] = all.player.x + t * cos(all.current_agile);
 		cxy[1] = all.player.y + t * sin(all.current_agile);

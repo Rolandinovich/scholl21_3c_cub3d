@@ -79,6 +79,6 @@ int				shot_screen(t_all *all)
 	make_header(bmp_fheader, bmpinfheader, all);
 	if (!write_in_header(bmp_fheader, bmpinfheader, all))
 		ft_putstr_fd("Saving screenshot failed!\n", 0);
-	close_win(0, all, " ");
+	close_win(all, " ");
 	return (0);
 }

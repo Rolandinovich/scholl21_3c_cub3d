@@ -20,7 +20,7 @@ int			count_lines(char *file, t_data *data)
 	int		count;
 
 	data->error = 1;
-	if ((fd = open(file, O_RDONLY)) == -1)
+	if ((fd = open(file, O_RDWR)) == -1)
 		return (-1);
 	count = 0;
 	while ((res = get_next_line(fd, &line)) >= 0)

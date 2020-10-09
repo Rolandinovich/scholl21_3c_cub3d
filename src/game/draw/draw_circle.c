@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 22:17:28 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/06 20:34:06 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/09 23:29:20 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void		sprite_column(t_all all, int column_height,
 			continue;
 		color = all.sprite.data[(int)((int)pix_x +
 					(int)pix_y * (all.sprite.width))];
-		if (color != 9961608)
+		if (color != all.sprite.data[0])
 			pixel_put(&all, win_x, win_y + 0.2 * column_height, color);
 		y++;
 	}
