@@ -6,7 +6,7 @@
 /*   By: charmon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 23:10:16 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/10 00:14:01 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/10 00:30:15 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int			check_files(t_data *data)
 	close(fd);
 	if (res)
 	{
+		ft_putstr_fd("Error\nCant't load textures", 1);
 		clear_2x_list(data->map);
 	}
 	return (res);
