@@ -6,7 +6,7 @@
 /*   By: charmon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 23:03:00 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/09 23:53:45 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/10 07:49:45 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ void			parse_map(int start_idx, t_data *data);
 void			verify_map(t_data *data);
 int				init_data_1(t_data *data, t_all *all);
 void			pixel_put(t_all *data, int x, int y, int color);
-void			draw_circle(t_all all);
+void			draw_circle(t_all *all);
 float			calc_text_distance(t_all all, char *texture,
 					float *textcord, float *dist);
 void			draw_f_c(t_all all, int column_height, size_t win_x);
@@ -169,7 +169,7 @@ void			close_win(t_all *all, char *msg);
 int				event_destroy_window(void *param);
 int				loop_manager(void *param);
 int				init_data_2(t_data *data, t_all *all);
-void			update_sprite_distance(t_all all);
+void			update_sprite_distance(t_all *all);
 void			sprite_column(t_all all, int column_height,
 					const size_t texcoord, size_t win_x);
 int				shot_screen(t_all *all);

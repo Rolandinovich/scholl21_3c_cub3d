@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 22:17:10 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/09 22:42:13 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/10 09:33:46 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,9 @@ void		pixel_put(t_all *data, int x, int y, int color)
 	if (x > data->win_w || x < 0 || y > data->win_h || y < 0)
 		return ;
 	dst = data->win->addr + (y * data->win->line_length + \
-	x * (data->win->bits_per_pixel / 8));
-	*(int*)dst = color;
+		x * (data->win->bits_per_pixel / 8));
+	if (*(int*)dst != color)
+		*(int*)dst = color;
 }
 
 void		draw_f_c(t_all all, int column_height, size_t win_x)

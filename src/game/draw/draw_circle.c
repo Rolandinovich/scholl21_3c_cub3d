@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 22:17:28 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/09 23:29:20 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/10 12:15:22 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,11 @@ void		draw_textures(t_all *all)
 	}
 }
 
-void		draw_circle(t_all all)
+void		draw_circle(t_all *all)
 {
-	draw_textures(&all);
+	draw_textures(all);
 	update_sprite_distance(all);
-	if (!all.save)
-		mlx_put_image_to_window(all.win->mlx, all.win->win, all.win->img, 0, 0);
+	if (!all->save)
+		mlx_put_image_to_window(all->win->mlx,
+			all->win->win, all->win->img, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 22:16:52 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/05 22:04:53 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/10 07:49:45 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,29 +51,29 @@ void		calculate_distances(t_all *all)
 			+ pow(all->player.y - all->sprites[i].y, 2));
 }
 
-void		update_sprite_distance(t_all all)
+void		update_sprite_distance(t_all *all)
 {
 	int			k;
 	float		dist;
 	int			i;
 
-	calculate_distances(&all);
+	calculate_distances(all);
 	k = 0;
 	while (k != -1)
 	{
 		i = -1;
 		k = -1;
 		dist = -1;
-		while (++i < all.sprite_c)
-			if (all.sprites[i].dist > dist)
+		while (++i < all->sprite_c)
+			if (all->sprites[i].dist > dist)
 			{
 				k = i;
-				dist = all.sprites[i].dist;
+				dist = all->sprites[i].dist;
 			}
 		if (k != -1)
 		{
-			draw_sprite(all.sprites[k], all);
-			all.sprites[k].dist = -1;
+			draw_sprite(all->sprites[k], *all);
+			all->sprites[k].dist = -1;
 		}
 	}
 }

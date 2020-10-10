@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 23:09:25 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/10 00:11:24 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/10 00:15:33 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int			main(int argc, char **argv)
 	!(init_data_1(&data, &all)) &&
 	!(init_data_2(&data, &all))))
 		event_destroy_window(&all);
-	draw_circle(all);
+	draw_circle(&all);
 	if (all.save)
 	{
 		shot_screen(&all);
