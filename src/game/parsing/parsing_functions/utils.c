@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 23:09:42 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/06 20:34:06 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/10 19:13:16 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	clear_2x_list(char **list)
 	while (list[++idx])
 		free(list[idx]);
 	free(list);
+	list = NULL;
 }
 
 void	space2comma(char *str)

@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 23:09:25 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/10 00:15:33 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/10 18:51:35 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ int			main(int argc, char **argv)
 	t_data	data;
 	t_all	all;
 
+	data.map = NULL;
+	data.data_lines = NULL;
+	all.map = NULL;
 	if (!((!check_save(argc, argv, &all)) &&
 	!(make_map(argv[1], &data)) &&
 	!(check_files(&data)) &&
