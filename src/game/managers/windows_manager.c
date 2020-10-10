@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 22:18:30 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/10 20:08:33 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/10 20:48:22 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		close_win(t_all *all, char *msg)
 {
-	if (!all->save && !all->error)
+	if (all->destroy_win)
 		mlx_destroy_window(all->win->mlx, all->win->win);
 	ft_putstr_fd(msg, 1);
 	if (all->map)

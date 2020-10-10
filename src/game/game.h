@@ -6,7 +6,7 @@
 /*   By: charmon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 23:03:00 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/10 07:49:45 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/10 08:16:48 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ typedef struct	s_all
 	char		last_t;
 	int			save;
 	float		current_agile;
+	int			destroy_win;
 }				t_all;
 
 void			load_data(char *file, t_data *data);
