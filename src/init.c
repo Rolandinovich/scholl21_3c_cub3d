@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 21:40:59 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/10 12:43:14 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/10 20:02:08 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ int			init_mlx(t_data *data, t_all *all)
 		return ((data->error = 2));
 	all->win_w = (data->r[0] <= 1920) ? data->r[0] : 1910;
 	all->win_h = (data->r[1] <= 1080) ? data->r[1] : 1070;
+	win->win = NULL;
 	if (!all->save)
 		win->win = mlx_new_window(win->mlx, all->win_w, all->win_h, "CUB-IK");
-	if (!win->win)
+	if (!win->win && !all->save)
 		return ((data->error = 2));
 	if (!(win->img = mlx_new_image(win->mlx, all->win_w, all->win_h)))
 		return ((data->error = 2));
