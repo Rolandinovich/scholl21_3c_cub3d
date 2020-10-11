@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 21:40:59 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/10 21:00:12 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/10 21:01:34 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int			init_mlx(t_data *data, t_all *all)
 	}
 	if (!(win->mlx = mlx_init()))
 		return ((data->error = 2));
-	all->win_w = (data->r[0] <= 1920) ? data->r[0] : 1910;
-	all->win_h = (data->r[1] <= 1080) ? data->r[1] : 1070;
+	all->win_w = (data->r[0] <= 1920) ? data->r[0] : 1920;
+	all->win_h = (data->r[1] <= 1080) ? data->r[1] : 1080;
 	win->win = NULL;
 	if (!all->save)
 	{
