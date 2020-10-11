@@ -6,7 +6,7 @@
 /*   By: charmon <charmon@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 23:09:52 by charmon           #+#    #+#             */
-/*   Updated: 2020/10/05 23:09:52 by charmon          ###   ########.fr       */
+/*   Updated: 2020/10/11 12:04:12 by charmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int		write_in_header(unsigned char *bmp_fheader,
 		write(fd, all->win->addr + i * all->win->line_length, len);
 		i++;
 	}
-	if (close(fd < 0))
+	if (close(fd) < 0)
 	{
 		ft_putstr_fd("Close file error!\n", 0);
 		return (0);
